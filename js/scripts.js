@@ -225,7 +225,7 @@
   hamburger.addEventListener('click', toggleMenu);
   menu.addEventListener('click', function (e) { if (e.target === menu) closeMenu(); });
 
-  menu.querySelectorAll('nav a[data-section]').forEach(function (link) {
+  document.querySelectorAll('a[data-section]').forEach(function (link) {
     link.addEventListener('click', function (e) {
       e.preventDefault();
       const idx = parseInt(link.getAttribute('data-section'), 10);
