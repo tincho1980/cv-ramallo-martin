@@ -21,8 +21,13 @@ html, body {
   cursor: none;
 }
 
-.cursor { position:fixed; width:10px; height:10px; background:var(--matrix); border-radius:50%; pointer-events:none; z-index:9999; transform:translate(-50%,-50%); transition:width .2s,height .2s; mix-blend-mode:screen; box-shadow:0 0 8px var(--matrix); }
-.cursor-ring { position:fixed; width:34px; height:34px; border:1px solid var(--matrix); border-radius:50%; pointer-events:none; z-index:9998; transform:translate(-50%,-50%); transition:all .25s cubic-bezier(.25,.8,.25,1); mix-blend-mode:screen; }
+.cursor { position:fixed; width:10px; height:10px; background:var(--matrix); border-radius:50%; pointer-events:none; z-index:9999; transform:translate(-50%,-50%); transition:width .2s,height .2s,opacity .15s ease,visibility .15s; mix-blend-mode:screen; box-shadow:0 0 8px var(--matrix); }
+.cursor-ring { position:fixed; width:34px; height:34px; border:1px solid var(--matrix); border-radius:50%; pointer-events:none; z-index:9998; transform:translate(-50%,-50%); transition:all .25s cubic-bezier(.25,.8,.25,1),opacity .15s ease,visibility .15s; mix-blend-mode:screen; }
+.cursor.cursor--hidden,
+.cursor-ring.cursor--hidden {
+  opacity: 0;
+  visibility: hidden;
+}
 
 #matrix-rain {
   position: fixed; inset: 0; z-index: 0;
@@ -33,7 +38,6 @@ html, body {
   position: fixed; z-index: 1000;
   top: 36px; left: 36px;
   /* transform: rotate(-12deg); */
-  cursor: pointer;
   display: flex; flex-direction: column; gap: 7px;
   padding: 12px;
   transition: transform .3s ease;
@@ -49,6 +53,27 @@ html, body {
 #hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(6px, 6px); }
 #hamburger.open span:nth-child(2) { opacity: 0; transform: translateX(-10px); }
 #hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(6px, -6px); }
+
+.lang-switch {
+  position: fixed; z-index: 1000;
+  top: 36px; right: 36px;
+  display: flex; align-items: center; gap: 10px;
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em;
+}
+.lang-switch a {
+  color: var(--muted); text-decoration: none;
+  transition: color .2s ease, text-shadow .2s ease;
+}
+.lang-switch a:hover {
+  color: var(--matrix);
+  text-shadow: 0 0 10px rgba(0,255,65,0.35);
+}
+.lang-switch__link--active {
+  color: var(--matrix); pointer-events: none;
+}
+.lang-switch__sep {
+  color: var(--matrix-dark); user-select: none;
+}
 
 #side-menu {
   position: fixed; inset: 0; z-index: 900;
@@ -87,24 +112,34 @@ html, body {
 #progress {
   position: fixed; right: 32px; top: 50%; transform: translateY(-50%);
   z-index: 500; display: flex; flex-direction: column; gap: 12px;
+  align-items: flex-end;
 }
 .pdot {
   width: 5px; height: 5px; border-radius: 50%;
   background: var(--matrix-dark); border: 1px solid var(--matrix-dark);
-  transition: all .3s ease; cursor: pointer;
+  transition: all .3s ease;
+  position: relative; flex-shrink: 0;
+}
+.pdot::before {
+  content: attr(title);
+  position: absolute;
+  right: calc(100% + 10px);
+  top: 50%; transform: translateY(-50%);
+  font-family: var(--mono); font-size: 9px;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--muted); white-space: nowrap;
+  transition: color .3s ease;
+  pointer-events: auto;
 }
 .pdot:hover { background: var(--matrix-dim); border-color: var(--matrix-dim); }
+.pdot:hover::before { color: var(--matrix-dim); }
 .pdot.active {
   background: var(--matrix); box-shadow: 0 0 10px var(--matrix);
   border-color: var(--matrix); width: 7px; height: 7px;
 }
+.pdot.active::before { color: var(--matrix); }
 
-.coords {
-  position: fixed; bottom: 24px; right: 32px;
-  font-family: var(--mono); font-size: 10px;
-  color: var(--matrix-dark); letter-spacing: 0.08em;
-  z-index: 500;
-}
+#coords { display: none; }
 
 #scroll-hint {
   position: fixed; bottom: 52px; left: 50%; transform: translateX(-50%);
@@ -159,6 +194,33 @@ html, body {
 
 .hero-content { text-align: center; position: relative; z-index: 2; padding: 0 20px; }
 
+.hero-avatar {
+  display: inline-block;
+  width: 88px; height: 88px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-top: 24px;
+  margin-bottom: 20px;
+  border: 1px solid rgba(0,255,65,0.25);
+  box-shadow: 0 0 18px rgba(0,255,65,0.12), 0 0 0 4px rgba(0,255,65,0.05);
+  transition: box-shadow .4s ease, border-color .4s ease;
+}
+/* .hero-avatar:hover {
+  border-color: rgba(0,255,65,0.5);
+  box-shadow: 0 0 28px rgba(0,255,65,0.22), 0 0 0 4px rgba(0,255,65,0.08);
+} */
+.hero-avatar img {
+  width: 88px; height: 88px;
+  object-fit: cover; object-position: center 70%;
+  transform: scale(1.35);
+  transform-origin: center 25%;
+  filter: grayscale(30%) brightness(0.88);
+  transition: filter .4s ease;
+}
+/* .hero-avatar:hover img {
+  filter: grayscale(0%) brightness(1);
+} */
+
 .hero-eyebrow {
   font-family: var(--mono); font-size: 11px;
   letter-spacing: 0.2em; text-transform: uppercase;
@@ -189,6 +251,34 @@ html, body {
   margin-bottom: 16px; line-height: 1.9;
 }
 .hero-desc span { color: var(--cyan); }
+
+.hero-ctas {
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 14px;
+  margin-top: 40px;
+}
+.hero-cta {
+  font-family: var(--mono); font-size: 11px;
+  padding: 12px 0;
+  border: none; color: rgba(200,255,200,0.55);
+  text-decoration: none; letter-spacing: 0.1em; text-transform: uppercase;
+  transition: color .25s ease;
+  display: inline-flex; align-items: center;
+  outline: none;
+}
+.hero-cta::before { content: '['; margin-right: 14px; color: var(--matrix-dark); transition: color .25s ease, text-shadow .25s ease; }
+.hero-cta::after  { content: ']'; margin-left: 14px;  color: var(--matrix-dark); transition: color .25s ease, text-shadow .25s ease; }
+.hero-cta:hover, .hero-cta:focus-visible { color: var(--matrix); }
+.hero-cta:hover::before, .hero-cta:focus-visible::before,
+.hero-cta:hover::after,  .hero-cta:focus-visible::after {
+  color: var(--matrix); text-shadow: 0 0 10px rgba(0,255,65,0.5);
+}
+.hero-cta--file { color: var(--cyan-dim); }
+.hero-cta--file::before, .hero-cta--file::after { color: rgba(0,229,204,0.3); }
+.hero-cta--file:hover, .hero-cta--file:focus-visible { color: var(--cyan); }
+.hero-cta--file:hover::before, .hero-cta--file:focus-visible::before,
+.hero-cta--file:hover::after,  .hero-cta--file:focus-visible::after {
+  color: var(--cyan); text-shadow: 0 0 10px rgba(0,229,204,0.5);
+}
 
 .about-inner {
   display: grid; grid-template-columns: 1.3fr 1fr;
@@ -238,7 +328,7 @@ html, body {
 .pill {
   font-family: var(--mono); font-size: 11px; padding: 9px 18px;
   border: 1px solid var(--matrix-dark); color: rgba(200,255,200,0.55);
-  letter-spacing: 0.04em; transition: all .25s; cursor: default;
+  letter-spacing: 0.04em; transition: all .25s;
 }
 .pill:hover {
   border-color: var(--matrix); color: var(--matrix);
@@ -277,7 +367,7 @@ html, body {
 .proj-card {
   border: 1px solid var(--matrix-dark); padding: 28px 24px;
   position: relative; overflow: hidden;
-  transition: all .3s ease; cursor: default;
+  transition: all .3s ease;
   background: rgba(0,255,65,0.01);
 }
 .proj-card::before {
@@ -304,24 +394,29 @@ html, body {
 }
 .proj-more a:hover { text-shadow: 0 0 14px var(--matrix); }
 
-.contact-inner { max-width: 720px; width: 90%; text-align: center; }
+.contact-inner {
+  max-width: 1020px; width: 90%;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 80px; align-items: center;
+}
+.contact-left { text-align: left; }
 .contact-big {
-  font-family: var(--serif); font-size: clamp(44px, 7vw, 88px);
+  font-family: var(--serif); font-size: clamp(36px, 5.5vw, 72px);
   font-weight: 900; letter-spacing: -0.02em; line-height: 1;
-  margin-bottom: 40px; color: var(--white);
+  margin-bottom: 36px; color: var(--white);
 }
 .contact-big em {
   font-style: italic; font-weight: 300; color: var(--matrix);
   text-shadow: 0 0 36px rgba(0,255,65,0.45);
 }
 .contact-email {
-  font-family: var(--mono); font-size: 16px; color: var(--cyan);
+  font-family: var(--mono); font-size: 14px; color: var(--cyan);
   text-decoration: none; display: inline-flex; align-items: center;
-  gap: 12px; margin-bottom: 44px; letter-spacing: 0.04em;
+  gap: 12px; margin-bottom: 32px; letter-spacing: 0.04em;
   transition: text-shadow .2s;
 }
 .contact-email:hover { text-shadow: 0 0 16px var(--cyan); }
-.contact-links { display: flex; justify-content: center; gap: 14px; margin-bottom: 52px; }
+.contact-links { display: flex; gap: 14px; margin-bottom: 36px; }
 .clink {
   font-family: var(--mono); font-size: 11px; padding: 11px 24px;
   border: 1px solid var(--matrix-dark); color: rgba(200,255,200,0.55);
@@ -334,6 +429,60 @@ html, body {
   color: var(--muted); letter-spacing: 0.1em;
   line-height: 2;
 }
+
+.contact-form { display: flex; flex-direction: column; gap: 20px; }
+.cf-field { display: flex; flex-direction: column; gap: 7px; }
+.cf-label {
+  font-family: var(--mono); font-size: 10px;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--muted);
+}
+.cf-input {
+  font-family: var(--mono); font-size: 12px;
+  background: transparent;
+  border: 1px solid var(--matrix-dark);
+  color: var(--white);
+  padding: 11px 14px;
+  outline: none;
+  letter-spacing: 0.04em;
+  transition: border-color .25s, box-shadow .25s;
+  resize: none;
+  width: 100%;
+}
+.cf-input:focus {
+  border-color: var(--matrix);
+  box-shadow: 0 0 14px rgba(0,255,65,0.08);
+}
+.cf-input::placeholder { color: var(--muted); }
+.cf-textarea { min-height: 100px; }
+.cf-submit {
+  font-family: var(--mono); font-size: 11px;
+  padding: 13px 28px;
+  border: 1px solid var(--matrix-dark);
+  background: transparent;
+  color: rgba(200,255,200,0.55);
+  letter-spacing: 0.1em; text-transform: uppercase;
+  cursor: pointer;
+  align-self: flex-start;
+  transition: all .25s;
+}
+.cf-submit:hover {
+  border-color: var(--matrix);
+  color: var(--matrix);
+  box-shadow: 0 0 18px rgba(0,255,65,0.1);
+}
+.cf-submit:disabled {
+  opacity: 0.45; cursor: not-allowed;
+  border-color: var(--matrix-dark); color: rgba(200,255,200,0.3);
+  box-shadow: none;
+}
+.cf-feedback {
+  font-family: var(--mono); font-size: 11px;
+  letter-spacing: 0.06em; line-height: 1.6;
+  min-height: 1.2em;
+}
+.cf-feedback--ok  { color: var(--matrix); text-shadow: 0 0 10px rgba(0,255,65,0.35); }
+.cf-feedback--err { color: #ff6b6b; }
 
 /* ── Loader ──────────────────────────────────────────────── */
 #loader {
