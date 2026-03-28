@@ -1,0 +1,28 @@
+---
+description: Architecture, SEO, and code rules for the static personal portfolio.
+globs: *.{html,css,js}
+---
+
+# Project Context
+This is the personal portfolio of Martín Ramallo, Full-Stack Developer & Tech Lead. The main goal of the site is employability, professional positioning, and SEO optimization for search engines. 
+The design must convey professionalism, cleanliness, and a technical leadership profile.
+
+# Strict Tech Stack
+- **Frontend:** Semantic HTML5, pure CSS3 (with CSS variables), and Vanilla JavaScript (ES6+).
+- **Hosting:** GitHub Pages (Static deployment).
+- **CRITICAL RULE:** Do not suggest, install, or use external UI frameworks or libraries (such as React, Vue, Next.js, Tailwind, or Bootstrap) unless explicitly requested. Keep dependencies at zero.
+
+# Multilingual Architecture (i18n) and SEO
+The site is multilingual (Spanish / English) implemented statically via directory structure to maximize SEO.
+- `/index.html`: Spanish version (Main language and `x-default`).
+- `/en/index.html`: English version.
+- `/css/` and `/js/`: Shared resources for both versions.
+
+**AI Rules for i18n:**
+1. If you modify the DOM structure, add a section, or change a class in `/index.html`, you **MUST** apply the exact same structural change in `/en/index.html`.
+2. Do not use JavaScript to inject or change translations dynamically. The content must be hardcoded in their respective HTML files so Google crawlers can index it correctly.
+3. Ensure that the `<link rel="alternate" hreflang="...">` tags are always present and correct in the `<head>` of all HTML files.
+
+# Code and Style Rules
+- **CSS:** Use BEM (Block Element Modifier) methodology for naming classes. Prioritize Flexbox and CSS Grid. Use native CSS variables (`:root`) for the color palette (dark mode) and typography.
+- **JavaScript:** Keep logic separate from the view. Use `document.querySelector`, `addEventListener

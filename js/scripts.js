@@ -13,14 +13,46 @@
   const coordsEl   = document.getElementById('coords');
   const hintEl     = document.getElementById('scroll-hint');
   const menu       = document.getElementById('side-menu');
+  const langSwitch = document.querySelector('.lang-switch');
+
+  const pageLang = (document.documentElement.getAttribute('lang') || 'en').toLowerCase().indexOf('es') === 0 ? 'es' : 'en';
+
+  const SECTION_NAMES = {
+    es: ['INICIO', 'SOBRE MÍ', 'STACK', 'EXPERIENCIA', 'PROYECTOS', 'CONTACTO'],
+    en: ['INIT', 'ABOUT', 'STACK', 'XP', 'PROJECTS', 'CONTACT'],
+  };
+  const LOADER_LINES = {
+    es: ['Seguí al conejo blanco...', 'Toc, toc...'],
+    en: ['Follow the white rabbit...', 'Knock, Knock...'],
+  };
+  const sectionNames = SECTION_NAMES[pageLang];
 
   // ── Custom cursor ────────────────────────────────────────
   let mx = 0, my = 0, rx = 0, ry = 0;
+
+  function setCursorVisible(visible) {
+    cur.classList.toggle('cursor--hidden', !visible);
+    curR.classList.toggle('cursor--hidden', !visible);
+  }
 
   document.addEventListener('mousemove', function (e) {
     mx = e.clientX; my = e.clientY;
     cur.style.left = mx + 'px';
     cur.style.top  = my + 'px';
+  });
+
+  document.documentElement.addEventListener('mouseleave', function () {
+    setCursorVisible(false);
+  });
+
+  document.documentElement.addEventListener('mouseenter', function (e) {
+    mx = e.clientX; my = e.clientY;
+    rx = mx; ry = my;
+    cur.style.left = mx + 'px';
+    cur.style.top  = my + 'px';
+    curR.style.left = rx + 'px';
+    curR.style.top  = ry + 'px';
+    setCursorVisible(true);
   });
 
   (function animCursor() {
@@ -31,7 +63,7 @@
     requestAnimationFrame(animCursor);
   })();
 
-  document.querySelectorAll('a, button, .pdot, #hamburger, .proj-card, .pill').forEach(function (el) {
+  document.querySelectorAll('a, button, .pdot, #hamburger, .proj-card, .pill, .lang-switch a').forEach(function (el) {
     el.addEventListener('mouseenter', function () {
       cur.style.width  = '16px';
       cur.style.height = '16px';
@@ -122,14 +154,13 @@
   // ── Navigation ───────────────────────────────────────────
   const worlds = document.querySelectorAll('.world');
   const pdots  = document.querySelectorAll('.pdot');
-  const NAMES  = ['INIT', 'ABOUT', 'STACK', 'XP', 'PROJECTS', 'CONTACT'];
   const TOTAL  = worlds.length;
   let current = 0;
   let transitioning = false;
 
   function updateUI(idx) {
     pdots.forEach(function (d, i) { d.classList.toggle('active', i === idx); });
-    coordsEl.textContent  = '0' + idx + ' · ' + NAMES[idx];
+    coordsEl.textContent  = '0' + idx + ' · ' + sectionNames[idx];
     hintEl.style.opacity  = idx === TOTAL - 1 ? '0' : '0.8';
   }
 
@@ -264,6 +295,10 @@
     setTimeout(function () {
       hamburger.style.transition  = 'opacity 0.8s ease';
       hamburger.style.opacity     = '1';
+      if (langSwitch) {
+        langSwitch.style.transition = 'opacity 0.8s ease';
+        langSwitch.style.opacity    = '1';
+      }
       progressEl.style.transition = 'opacity 0.8s ease';
       progressEl.style.opacity    = '1';
       coordsEl.style.transition   = 'opacity 0.8s ease';
@@ -281,16 +316,17 @@
   // Hide all chrome while the loader runs — set AFTER updateUI so we win
   viewport.style.opacity    = '0';
   hamburger.style.opacity   = '0';
+  if (langSwitch) langSwitch.style.opacity = '0';
   progressEl.style.opacity  = '0';
   coordsEl.style.opacity    = '0';
   hintEl.style.opacity      = '0';
 
-  // "Follow the white rabbit..." → pause → "Knock, Knock..." → fade hero in
-  typeLine('Follow the white rabbit...', 52, function () {
+  const loaderPair = LOADER_LINES[pageLang];
+  typeLine(loaderPair[0], 52, function () {
     setTimeout(function () {
       loaderText.textContent = '';
       setTimeout(function () {
-        typeLine('Knock, Knock...', 75, function () {
+        typeLine(loaderPair[1], 75, function () {
           setTimeout(function () {
             loaderEl.classList.add('hide');
             setTimeout(showHero, 950);
