@@ -321,6 +321,54 @@
   coordsEl.style.opacity    = '0';
   hintEl.style.opacity      = '0';
 
+  // ── Contact Form (Formspree) ─────────────────────────
+  const contactForm = document.querySelector('.contact-form');
+  if (contactForm) {
+    const submitBtn = contactForm.querySelector('.cf-submit');
+    const feedback  = contactForm.querySelector('.cf-feedback');
+    const isEs      = pageLang === 'es';
+
+    contactForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (!contactForm.checkValidity()) {
+        contactForm.reportValidity();
+        return;
+      }
+      submitBtn.disabled    = true;
+      submitBtn.textContent = isEs ? 'Enviando...' : 'Sending...';
+      feedback.textContent  = '';
+      feedback.className    = 'cf-feedback';
+
+      fetch('https://formspree.io/f/xeepeddw', {
+        method:  'POST',
+        headers: { 'Accept': 'application/json' },
+        body:    new FormData(contactForm),
+      })
+        .then(function (res) {
+          if (res.ok) {
+            feedback.textContent = isEs
+              ? '¡Mensaje enviado! Te respondo pronto.'
+              : "Message sent! I'll get back to you soon.";
+            feedback.classList.add('cf-feedback--ok');
+            contactForm.reset();
+          } else {
+            return res.json().then(function (data) { throw data; });
+          }
+        })
+        .catch(function () {
+          feedback.textContent = isEs
+            ? 'Algo salió mal. Intentá de nuevo o escribime directo.'
+            : 'Something went wrong. Try again or reach out directly.';
+          feedback.classList.add('cf-feedback--err');
+        })
+        .finally(function () {
+          submitBtn.disabled    = false;
+          submitBtn.textContent = isEs ? 'Enviar →' : 'Send →';
+        });
+    });
+  }
+
+  // ── Loader sequence ──────────────────────────────────────
   const loaderPair = LOADER_LINES[pageLang];
   typeLine(loaderPair[0], 52, function () {
     setTimeout(function () {

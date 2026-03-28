@@ -276,16 +276,36 @@
   <div class="world" id="w5">
     <div class="section-label">05 / contact</div>
     <div class="contact-inner">
-      <div class="contact-big">Got a<br>project <em>in mind?</em></div>
-      <div><a href="mailto:miramallo@gmail.com" class="contact-email">→ miramallo@gmail.com</a></div>
-      <div class="contact-links">
-        <a href="https://github.com/tincho1980" target="_blank" rel="noopener noreferrer" class="clink">GitHub</a>
-        <a href="https://linkedin.com/in/mramallo" target="_blank" rel="noopener noreferrer" class="clink">LinkedIn</a>
+      <div class="contact-left">
+        <div class="contact-big">Got a<br>project <em>in mind?</em></div>
+        <div><a href="mailto:miramallo@gmail.com" class="contact-email">→ miramallo@gmail.com</a></div>
+        <div class="contact-links">
+          <a href="https://github.com/tincho1980" target="_blank" rel="noopener noreferrer" class="clink">GitHub</a>
+          <a href="https://linkedin.com/in/mramallo" target="_blank" rel="noopener noreferrer" class="clink">LinkedIn</a>
+        </div>
+        <div class="contact-meta">
+          La Plata, Buenos Aires, Argentina<br>
+          Native Spanish &nbsp;·&nbsp; English B2 &nbsp;·&nbsp; Italian B2<br>
+          Open to work · Freelance · Remote
+        </div>
       </div>
-      <div class="contact-meta">
-        La Plata, Buenos Aires, Argentina<br>
-        Native Spanish &nbsp;·&nbsp; English B2 &nbsp;·&nbsp; Italian B2<br>
-        Open to work · Freelance · Remote
+      <div class="contact-right">
+        <form class="contact-form" novalidate>
+          <div class="cf-field">
+            <label class="cf-label" for="cf-name">Name</label>
+            <input class="cf-input" type="text" id="cf-name" name="from_name" autocomplete="name" required>
+          </div>
+          <div class="cf-field">
+            <label class="cf-label" for="cf-email">Email</label>
+            <input class="cf-input" type="email" id="cf-email" name="email" autocomplete="email" required>
+          </div>
+          <div class="cf-field">
+            <label class="cf-label" for="cf-message">Message</label>
+            <textarea class="cf-input cf-textarea" id="cf-message" name="message" rows="4" required></textarea>
+          </div>
+          <button class="cf-submit" type="submit">Send →</button>
+          <p class="cf-feedback" aria-live="polite"></p>
+        </form>
       </div>
     </div>
   </div>

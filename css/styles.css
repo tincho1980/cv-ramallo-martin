@@ -394,24 +394,29 @@ html, body {
 }
 .proj-more a:hover { text-shadow: 0 0 14px var(--matrix); }
 
-.contact-inner { max-width: 720px; width: 90%; text-align: center; }
+.contact-inner {
+  max-width: 1020px; width: 90%;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 80px; align-items: center;
+}
+.contact-left { text-align: left; }
 .contact-big {
-  font-family: var(--serif); font-size: clamp(44px, 7vw, 88px);
+  font-family: var(--serif); font-size: clamp(36px, 5.5vw, 72px);
   font-weight: 900; letter-spacing: -0.02em; line-height: 1;
-  margin-bottom: 40px; color: var(--white);
+  margin-bottom: 36px; color: var(--white);
 }
 .contact-big em {
   font-style: italic; font-weight: 300; color: var(--matrix);
   text-shadow: 0 0 36px rgba(0,255,65,0.45);
 }
 .contact-email {
-  font-family: var(--mono); font-size: 16px; color: var(--cyan);
+  font-family: var(--mono); font-size: 14px; color: var(--cyan);
   text-decoration: none; display: inline-flex; align-items: center;
-  gap: 12px; margin-bottom: 44px; letter-spacing: 0.04em;
+  gap: 12px; margin-bottom: 32px; letter-spacing: 0.04em;
   transition: text-shadow .2s;
 }
 .contact-email:hover { text-shadow: 0 0 16px var(--cyan); }
-.contact-links { display: flex; justify-content: center; gap: 14px; margin-bottom: 52px; }
+.contact-links { display: flex; gap: 14px; margin-bottom: 36px; }
 .clink {
   font-family: var(--mono); font-size: 11px; padding: 11px 24px;
   border: 1px solid var(--matrix-dark); color: rgba(200,255,200,0.55);
@@ -424,6 +429,60 @@ html, body {
   color: var(--muted); letter-spacing: 0.1em;
   line-height: 2;
 }
+
+.contact-form { display: flex; flex-direction: column; gap: 20px; }
+.cf-field { display: flex; flex-direction: column; gap: 7px; }
+.cf-label {
+  font-family: var(--mono); font-size: 10px;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--muted);
+}
+.cf-input {
+  font-family: var(--mono); font-size: 12px;
+  background: transparent;
+  border: 1px solid var(--matrix-dark);
+  color: var(--white);
+  padding: 11px 14px;
+  outline: none;
+  letter-spacing: 0.04em;
+  transition: border-color .25s, box-shadow .25s;
+  resize: none;
+  width: 100%;
+}
+.cf-input:focus {
+  border-color: var(--matrix);
+  box-shadow: 0 0 14px rgba(0,255,65,0.08);
+}
+.cf-input::placeholder { color: var(--muted); }
+.cf-textarea { min-height: 100px; }
+.cf-submit {
+  font-family: var(--mono); font-size: 11px;
+  padding: 13px 28px;
+  border: 1px solid var(--matrix-dark);
+  background: transparent;
+  color: rgba(200,255,200,0.55);
+  letter-spacing: 0.1em; text-transform: uppercase;
+  cursor: pointer;
+  align-self: flex-start;
+  transition: all .25s;
+}
+.cf-submit:hover {
+  border-color: var(--matrix);
+  color: var(--matrix);
+  box-shadow: 0 0 18px rgba(0,255,65,0.1);
+}
+.cf-submit:disabled {
+  opacity: 0.45; cursor: not-allowed;
+  border-color: var(--matrix-dark); color: rgba(200,255,200,0.3);
+  box-shadow: none;
+}
+.cf-feedback {
+  font-family: var(--mono); font-size: 11px;
+  letter-spacing: 0.06em; line-height: 1.6;
+  min-height: 1.2em;
+}
+.cf-feedback--ok  { color: var(--matrix); text-shadow: 0 0 10px rgba(0,255,65,0.35); }
+.cf-feedback--err { color: #ff6b6b; }
 
 /* ── Loader ──────────────────────────────────────────────── */
 #loader {
