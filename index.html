@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Martín Ramallo — Full Stack Dev & Tech Lead</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<div id="loader">
+  <div id="loader-terminal">
+    <span id="loader-text"></span><span class="loader-cur"></span>
+  </div>
+</div>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<canvas id="matrix-rain"></canvas>
+
+<div id="hamburger">
+  <span></span><span></span><span></span>
+</div>
+
+<div id="side-menu">
+  <nav>
+    <ul>
+      <li><a href="#" data-section="0">Hero</a></li>
+      <li><a href="#" data-section="1">Sobre mí</a></li>
+      <li><a href="#" data-section="2">Stack</a></li>
+      <li><a href="#" data-section="3">Experiencia</a></li>
+      <li><a href="#" data-section="4">Proyectos</a></li>
+      <li><a href="#" data-section="5">Contacto</a></li>
+    </ul>
+  </nav>
+  <div class="menu-footer">miramallo@gmail.com &nbsp;·&nbsp; github.com/tincho1980 &nbsp;·&nbsp; La Plata, AR</div>
+</div>
+
+<div id="progress">
+  <div class="pdot active" data-section="0" title="Hero"></div>
+  <div class="pdot" data-section="1" title="Sobre mí"></div>
+  <div class="pdot" data-section="2" title="Stack"></div>
+  <div class="pdot" data-section="3" title="Experiencia"></div>
+  <div class="pdot" data-section="4" title="Proyectos"></div>
+  <div class="pdot" data-section="5" title="Contacto"></div>
+</div>
+
+<div class="coords" id="coords">00 · INIT</div>
+
+<div id="scroll-hint">
+  scroll / swipe
+  <svg class="scroll-hint__icon" viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M12 5v14M5 12l7 7 7-7"/>
+  </svg>
+</div>
+
+<div id="viewport">
+
+  <div class="world active" id="w0">
+    <div class="hero-content">
+      <div class="hero-eyebrow">Full Stack Dev &nbsp;·&nbsp; Tech Lead &nbsp;·&nbsp; La Plata AR</div>
+      <h1 class="hero-name">Martín<br><em>Ramallo</em></h1>
+      <p class="hero-desc">
+        Co-Founder @ <span>Adavra</span> &nbsp;·&nbsp; SaaS &nbsp;·&nbsp; IA &nbsp;·&nbsp; DevOps<br>
+        Construyo sistemas que funcionan.<br>
+        Y también los que nadie más quiso diseñar.
+      </p>
+    </div>
+    <div class="portal-dot"></div>
+  </div>
+
+  <div class="world" id="w1">
+    <div class="section-label">01 / sobre mí</div>
+    <div class="about-inner">
+      <div class="about-text">
+        <p>Desarrollador Full Stack con un camino poco convencional: más de una década dirigiendo operaciones corporativas en España antes de hacer un <strong>pivot total al software</strong>.</p>
+        <p>Pienso en sistemas como ingeniero y en negocios como director. Cada decisión técnica la tomo con perspectiva de <span class="hl">producto y escala</span>.</p>
+        <p>Hoy lidero <span class="hl">Adavra</span>, co-fundé <span class="hl">Enfines</span> —SaaS B2B para gestión educativa— y sigo activo como freelancer construyendo soluciones end-to-end.</p>
+        <div class="about-flags">
+          <span class="flag on">Open to work</span>
+          <span class="flag">Freelance</span>
+          <span class="flag">Remote</span>
+          <span class="flag on">EN B2</span>
+          <span class="flag on">IT B2</span>
+        </div>
+      </div>
+      <div class="stats-col">
+        <div class="stat"><div class="stat-n">4+</div><div class="stat-l">años en desarrollo</div></div>
+        <div class="stat"><div class="stat-n">12+</div><div class="stat-l">años en dirección</div></div>
+        <div class="stat"><div class="stat-n">2</div><div class="stat-l">SaaS activos</div></div>
+      </div>
+    </div>
+    <div class="portal-dot"></div>
+  </div>
+
+  <div class="world" id="w2">
+    <div class="section-label">02 / stack</div>
+    <div class="stack-inner">
+      <div class="stack-cat">
+        <div class="cat-label">Backend & APIs</div>
+        <div class="pills">
+          <div class="pill core">Node.js</div><div class="pill core">NestJS</div>
+          <div class="pill core">Monorepo</div><div class="pill">Express</div>
+          <div class="pill">Django</div><div class="pill">REST APIs</div><div class="pill">Jest</div>
+        </div>
+      </div>
+      <div class="stack-cat">
+        <div class="cat-label">Frontend</div>
+        <div class="pills">
+          <div class="pill core">TypeScript</div><div class="pill core">React</div>
+          <div class="pill core">Next.js</div><div class="pill core">Vue.js</div>
+          <div class="pill">Tailwind CSS</div><div class="pill">Sass</div>
+        </div>
+      </div>
+      <div class="stack-cat">
+        <div class="cat-label">DB · Infra · IA</div>
+        <div class="pills">
+          <div class="pill core">PostgreSQL</div><div class="pill core">MongoDB</div>
+          <div class="pill">MySQL</div><div class="pill core">AWS</div>
+          <div class="pill">Cloudflare</div><div class="pill">Railway</div>
+          <div class="pill core">n8n</div><div class="pill core">AI Integration</div>
+          <div class="pill">Supabase</div><div class="pill">Git / GitHub</div>
+        </div>
+      </div>
+    </div>
+    <div class="portal-dot"></div>
+  </div>
+
+  <div class="world" id="w3">
+    <div class="section-label">03 / experiencia</div>
+    <div class="exp-inner">
+      <div class="exp-row">
+        <div>
+          <div class="exp-period">2026 — presente</div>
+          <div class="exp-co">Adavra</div>
+        </div>
+        <div>
+          <div class="exp-role">Co-Founder & <em>Tech Lead</em></div>
+          <p class="exp-desc">Arquitectura y desarrollo de Enfines, SaaS B2B para gestión educativa. Monorepo NestJS con módulos reutilizables, infraestructura completa e integración de IA para dashboards con consultas generadas automáticamente.</p>
+          <div class="exp-tags">
+            <span class="exp-tag hi">NestJS</span><span class="exp-tag hi">TypeScript</span>
+            <span class="exp-tag hi">IA</span><span class="exp-tag">PostgreSQL</span>
+            <span class="exp-tag">DevOps</span><span class="exp-tag">SaaS</span>
+          </div>
+        </div>
+      </div>
+      <div class="exp-row">
+        <div>
+          <div class="exp-period">2023 — presente</div>
+          <div class="exp-co">Freelance</div>
+        </div>
+        <div>
+          <div class="exp-role">Full Stack <em>Developer</em></div>
+          <p class="exp-desc">Soluciones end-to-end para fotografía, catering, inmobiliarias y organismos gubernamentales. Del código a la infraestructura en producción, con integraciones a sistemas legacy.</p>
+          <div class="exp-tags">
+            <span class="exp-tag hi">Next.js</span><span class="exp-tag hi">Vue.js</span>
+            <span class="exp-tag">Django</span><span class="exp-tag">Node.js</span>
+          </div>
+        </div>
+      </div>
+      <div class="exp-row">
+        <div>
+          <div class="exp-period">2021 — 2023</div>
+          <div class="exp-co">Devtion IT</div>
+        </div>
+        <div>
+          <div class="exp-role">Full Stack <em>Developer</em></div>
+          <p class="exp-desc">Frontend y backend para Ellie Care, RedLink y Campar. Stack MERN, integraciones relacionales y manejo de requerimientos complejos por cliente.</p>
+          <div class="exp-tags">
+            <span class="exp-tag">React</span><span class="exp-tag">Node.js</span>
+            <span class="exp-tag">MongoDB</span><span class="exp-tag">PostgreSQL</span>
+          </div>
+        </div>
+      </div>
+      <div class="exp-row exp-row--muted">
+        <div>
+          <div class="exp-period">2006 — 2018</div>
+          <div class="exp-co">ZT Hotels · España</div>
+        </div>
+        <div>
+          <div class="exp-role">Director <em>Corporativo</em></div>
+          <p class="exp-desc">Operaciones de 7 hoteles en España, reportando al CEO. Gestión de equipos multidisciplinarios, optimización de rentabilidad y diseño de procesos a escala.</p>
+          <div class="exp-tags">
+            <span class="exp-tag">Liderazgo</span><span class="exp-tag">Operaciones</span><span class="exp-tag">Estrategia</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="portal-dot"></div>
+  </div>
+
+  <div class="world" id="w4">
+    <div class="section-label">04 / proyectos</div>
+    <div class="proj-inner">
+      <div class="proj-card">
+        <div class="proj-n">01 —</div>
+        <div class="proj-name">Enfines</div>
+        <p class="proj-desc">SaaS B2B para gestión integral de organizaciones educativas. Dashboard con IA que genera reportes dinámicos.</p>
+        <div class="proj-tech">NestJS · Next.js · PostgreSQL · AI</div>
+        <div class="proj-arrow">↗</div>
+      </div>
+      <div class="proj-card">
+        <div class="proj-n">02 —</div>
+        <div class="proj-name">Vanguardia by Negrovski</div>
+        <p class="proj-desc">Sitio de marca fotográfica con infraestructura completa: dominio, DNS y correo transaccional.</p>
+        <div class="proj-tech">Next.js · Resend · Cloudflare</div>
+        <div class="proj-arrow">↗</div>
+      </div>
+      <div class="proj-card">
+        <div class="proj-n">03 —</div>
+        <div class="proj-name">Catering SaaS</div>
+        <p class="proj-desc">Gestión logística, menús e integración con sistema contable legacy para empresa de catering.</p>
+        <div class="proj-tech">Vue.js · Node.js · PostgreSQL</div>
+        <div class="proj-arrow">↗</div>
+      </div>
+      <div class="proj-card">
+        <div class="proj-n">04 —</div>
+        <div class="proj-name">FinEs Mapa Interactivo</div>
+        <p class="proj-desc">Visualización de datos gubernamentales con geolocalización para el programa FinEs.</p>
+        <div class="proj-tech">Django · Python · PostgreSQL · GIS</div>
+        <div class="proj-arrow">↗</div>
+      </div>
+      <div class="proj-card">
+        <div class="proj-n">05 —</div>
+        <div class="proj-name">PropAdmin</div>
+        <p class="proj-desc">Administración de inmobiliarias y gestión operativa de alquileres con panel dual.</p>
+        <div class="proj-tech">Node.js · React · PostgreSQL</div>
+        <div class="proj-arrow">↗</div>
+      </div>
+      <div class="proj-card proj-more">
+        <a href="https://github.com/tincho1980" target="_blank">github.com/tincho1980 →</a>
+      </div>
+    </div>
+    <div class="portal-dot"></div>
+  </div>
+
+  <div class="world" id="w5">
+    <div class="section-label">05 / contacto</div>
+    <div class="contact-inner">
+      <div class="contact-big">¿Tenés un<br>proyecto <em>en mente?</em></div>
+      <div><a href="mailto:miramallo@gmail.com" class="contact-email">→ miramallo@gmail.com</a></div>
+      <div class="contact-links">
+        <a href="https://github.com/tincho1980" target="_blank" class="clink">GitHub</a>
+        <a href="https://linkedin.com/in/mramallo" target="_blank" class="clink">LinkedIn</a>
+      </div>
+      <div class="contact-meta">
+        La Plata, Buenos Aires, Argentina<br>
+        Español nativo &nbsp;·&nbsp; English B2 &nbsp;·&nbsp; Italiano B2<br>
+        Open to work · Freelance · Remote
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script src="js/scripts.js" defer></script>
+</body>
+</html>
