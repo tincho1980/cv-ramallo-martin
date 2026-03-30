@@ -27,16 +27,90 @@
   };
   const sectionNames = SECTION_NAMES[pageLang];
 
-  // ── Projects carousel — duplicate cards for infinite loop ─
-  /** Duplicates track children so `translateX(-50%)` loops without a visible seam. */
-  (function () {
+  // ── Projects carousel: center active card; peek neighbors; arrows only + smooth slide ─
+  (function initProjCarousel() {
     var track = document.getElementById('proj-track');
-    if (!track) return;
-    var origCards = Array.prototype.slice.call(track.children);
-    origCards.forEach(function (card) {
-      var clone = card.cloneNode(true);
-      clone.setAttribute('aria-hidden', 'true');
-      track.appendChild(clone);
+    var outer = document.getElementById('proj-carousel');
+    if (!track || !outer) return;
+
+    var prevBtn = document.querySelector('.proj-nav--prev');
+    var nextBtn = document.querySelector('.proj-nav--next');
+    var cards = track.children;
+    var index = 0;
+    var pos = 0;
+    var animating = false;
+
+    function trackGapPx() {
+      var cs = window.getComputedStyle(track);
+      var g = cs.columnGap && cs.columnGap !== 'normal' ? cs.columnGap : cs.gap;
+      var n = parseFloat(g) || 20;
+      return n;
+    }
+
+    /** Aligns card `index` so its horizontal center matches the outer viewport center. */
+    function syncPosFromIndex() {
+      if (!cards.length) return;
+      var cw = cards[0].offsetWidth;
+      var gap = trackGapPx();
+      var step = cw + gap;
+      var outerW = outer.clientWidth;
+      pos = outerW / 2 - cw / 2 - index * step;
+    }
+
+    function setTransform() {
+      track.style.transform = 'translate3d(' + pos + 'px,0,0)';
+    }
+
+    function applyImmediate() {
+      track.classList.add('proj-track--no-trans');
+      syncPosFromIndex();
+      setTransform();
+      track.offsetHeight;
+      track.classList.remove('proj-track--no-trans');
+    }
+
+    function updateNavState() {
+      var n = cards.length;
+      if (prevBtn) prevBtn.disabled = index <= 0;
+      if (nextBtn) nextBtn.disabled = n <= 1 || index >= n - 1;
+    }
+
+    function go(delta) {
+      if (animating) return;
+      var n = cards.length;
+      var next = index + delta;
+      if (next < 0 || next >= n) return;
+      animating = true;
+      index = next;
+      syncPosFromIndex();
+      track.classList.remove('proj-track--no-trans');
+      setTransform();
+      updateNavState();
+    }
+
+    track.addEventListener('transitionend', function (e) {
+      if (e.target !== track || e.propertyName !== 'transform') return;
+      animating = false;
+      updateNavState();
+    });
+
+    syncPosFromIndex();
+    setTransform();
+    updateNavState();
+
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        applyImmediate();
+        updateNavState();
+      });
+    });
+
+    if (prevBtn) prevBtn.addEventListener('click', function () { go(-1); });
+    if (nextBtn) nextBtn.addEventListener('click', function () { go(1); });
+
+    window.addEventListener('resize', function () {
+      applyImmediate();
+      updateNavState();
     });
   })();
 
@@ -78,7 +152,7 @@
     requestAnimationFrame(animCursor);
   })();
 
-  document.querySelectorAll('a, button, .pdot, #hamburger, .proj-card, .pill, .lang-switch a').forEach(function (el) {
+  document.querySelectorAll('a, button, .pdot, #hamburger, .proj-card, .proj-nav, .pill, .lang-switch a').forEach(function (el) {
     el.addEventListener('mouseenter', function () {
       cur.style.width  = '16px';
       cur.style.height = '16px';
@@ -170,6 +244,99 @@
   const TOTAL  = worlds.length;
   let current = 0;
   let transitioning = false;
+
+  const scrollLayoutMq = window.matchMedia('(max-width: 768px)');
+
+  /** Clears inline styles left by `animateZoom` so CSS can control `.world` again. */
+  function clearWorldInline(el) {
+    el.style.transition = '';
+    el.style.transform = '';
+    el.style.opacity = '';
+    el.style.pointerEvents = '';
+  }
+
+  /** Which stacked section is near the viewport center (scroll layout only). */
+  function indexFromScrollPosition() {
+    const probe = window.scrollY + window.innerHeight * 0.35;
+    let acc = 0;
+    for (let i = 0; i < worlds.length; i++) {
+      const h = worlds[i].offsetHeight;
+      if (probe < acc + h) return i;
+      acc += h;
+    }
+    return worlds.length - 1;
+  }
+
+  let aboutScrollIo = null;
+
+  function setupAboutScrollObserver() {
+    const w1 = document.getElementById('w1');
+    if (!w1 || aboutScrollIo) return;
+    aboutScrollIo = new IntersectionObserver(
+      function (entries) {
+        const en = entries[0];
+        if (!en) return;
+        if (en.isIntersecting && en.intersectionRatio >= 0.28) {
+          startAboutStats();
+        } else if (!en.isIntersecting || en.intersectionRatio < 0.12) {
+          resetAboutStats();
+        }
+      },
+      { threshold: [0, 0.12, 0.28, 0.5] }
+    );
+    aboutScrollIo.observe(w1);
+  }
+
+  function teardownAboutScrollObserver() {
+    if (aboutScrollIo) {
+      aboutScrollIo.disconnect();
+      aboutScrollIo = null;
+    }
+  }
+
+  /** Toggles `html.layout-scroll`, resets worlds, syncs About stats observer. */
+  function applyScrollLayout() {
+    if (scrollLayoutMq.matches) {
+      document.documentElement.classList.add('layout-scroll');
+      Array.prototype.forEach.call(worlds, clearWorldInline);
+      setupAboutScrollObserver();
+      requestAnimationFrame(function () {
+        let target = current;
+        const hm = location.hash.match(/^#w(\d)$/);
+        if (hm) {
+          const hi = parseInt(hm[1], 10);
+          if (hi >= 0 && hi < worlds.length) target = hi;
+        }
+        let acc = 0;
+        for (let j = 0; j < target; j++) acc += worlds[j].offsetHeight;
+        window.scrollTo(0, acc);
+        if (hm && target === parseInt(hm[1], 10)) {
+          current = target;
+          updateUI(current);
+        }
+      });
+    } else {
+      const idx = indexFromScrollPosition();
+      window.scrollTo(0, 0);
+      document.documentElement.classList.remove('layout-scroll');
+      teardownAboutScrollObserver();
+      Array.prototype.forEach.call(worlds, clearWorldInline);
+      Array.prototype.forEach.call(worlds, function (w, i) {
+        w.classList.toggle('active', i === idx);
+      });
+      current = idx;
+      transitioning = false;
+      updateUI(current);
+      if (current === 1) startAboutStats();
+      else resetAboutStats();
+    }
+  }
+
+  if (typeof scrollLayoutMq.addEventListener === 'function') {
+    scrollLayoutMq.addEventListener('change', applyScrollLayout);
+  } else {
+    scrollLayoutMq.addListener(applyScrollLayout);
+  }
 
   /** Syncs progress dots, section label, and scroll hint visibility to `idx`. */
   function updateUI(idx) {
@@ -311,6 +478,10 @@
 
   document.querySelectorAll('a[data-section]').forEach(function (link) {
     link.addEventListener('click', function (e) {
+      if (scrollLayoutMq.matches) {
+        closeMenu();
+        return;
+      }
       e.preventDefault();
       const idx = parseInt(link.getAttribute('data-section'), 10);
       if (!Number.isNaN(idx)) goTo(idx);
@@ -318,6 +489,7 @@
   });
 
   progressEl.addEventListener('click', function (e) {
+    if (scrollLayoutMq.matches) return;
     const dot = e.target.closest('.pdot');
     if (!dot) return;
     const idx = parseInt(dot.getAttribute('data-section'), 10);
@@ -326,6 +498,7 @@
 
   let wCool = false;
   window.addEventListener('wheel', function (e) {
+    if (scrollLayoutMq.matches) return;
     if (wCool || transitioning) return;
     const d    = e.deltaY > 0 ? 1 : -1;
     const next = current + d;
@@ -340,6 +513,7 @@
     tStart = e.touches[0].clientY;
   }, { passive: true });
   window.addEventListener('touchend', function (e) {
+    if (scrollLayoutMq.matches) return;
     if (tCool || transitioning) return;
     const dy   = tStart - e.changedTouches[0].clientY;
     if (Math.abs(dy) < 44) return;
@@ -352,6 +526,7 @@
   }, { passive: true });
 
   window.addEventListener('keydown', function (e) {
+    if (scrollLayoutMq.matches) return;
     if (transitioning) return;
     if (e.key === 'ArrowDown' || e.key === 'PageDown' || e.key === ' ')
       goTo(Math.min(current + 1, TOTAL - 1));
@@ -398,6 +573,7 @@
   // ── Init ─────────────────────────────────────────────────
   // Set initial nav state (pdots, coords)
   updateUI(0);
+  applyScrollLayout();
 
   // Hide all chrome while the loader runs — set AFTER updateUI so we win
   viewport.style.opacity    = '0';
