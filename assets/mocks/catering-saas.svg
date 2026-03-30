@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 290 160">
+  <defs>
+    <linearGradient id="cbg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1c0e04"/>
+      <stop offset="100%" stop-color="#120800"/>
+    </linearGradient>
+  </defs>
+  <rect width="290" height="160" fill="url(#cbg)"/>
+  <rect width="290" height="30" fill="#1f1006"/>
+  <rect y="29.5" width="290" height="0.5" fill="#ff8c42" opacity="0.25"/>
+  <text x="12" y="19" font-family="monospace" font-size="9" fill="#ff8c42" font-weight="bold">CateringSaaS</text>
+  <text x="104" y="19" font-family="monospace" font-size="6.5" fill="rgba(255,160,80,0.3)">· Menus · Pedidos · Logistica · Reportes</text>
+  <rect width="56" height="130" y="30" fill="rgba(30,14,4,0.8)"/>
+  <rect x="55.5" y="30" width="0.5" height="130" fill="rgba(255,140,66,0.1)"/>
+  <rect x="6" y="38" width="44" height="14" rx="2" fill="rgba(255,140,66,0.12)"/>
+  <text x="10" y="49" font-family="monospace" font-size="6.5" fill="#ff8c42">Pedidos</text>
+  <text x="10" y="64" font-family="monospace" font-size="6.5" fill="rgba(255,140,66,0.35)">Menus</text>
+  <text x="10" y="78" font-family="monospace" font-size="6.5" fill="rgba(255,140,66,0.35)">Logistica</text>
+  <text x="10" y="92" font-family="monospace" font-size="6.5" fill="rgba(255,140,66,0.35)">Reportes</text>
+  <text x="10" y="106" font-family="monospace" font-size="6.5" fill="rgba(255,140,66,0.35)">Config</text>
+  <rect x="64" y="38" width="60" height="30" rx="2" fill="rgba(255,140,66,0.05)" stroke="rgba(255,140,66,0.2)" stroke-width="0.5"/>
+  <text x="70" y="50" font-family="monospace" font-size="5.5" fill="rgba(255,140,66,0.38)">HOY</text>
+  <text x="70" y="63" font-family="monospace" font-size="15" fill="#ff8c42" font-weight="bold">28</text>
+  <rect x="130" y="38" width="60" height="30" rx="2" fill="rgba(255,200,80,0.05)" stroke="rgba(255,200,80,0.2)" stroke-width="0.5"/>
+  <text x="136" y="50" font-family="monospace" font-size="5.5" fill="rgba(255,200,80,0.38)">INGRESOS</text>
+  <text x="136" y="63" font-family="monospace" font-size="12" fill="#ffc850" font-weight="bold">$184k</text>
+  <rect x="196" y="38" width="60" height="30" rx="2" fill="rgba(255,140,66,0.05)" stroke="rgba(255,140,66,0.2)" stroke-width="0.5"/>
+  <text x="202" y="50" font-family="monospace" font-size="5.5" fill="rgba(255,140,66,0.38)">ENTREGAS</text>
+  <text x="202" y="63" font-family="monospace" font-size="15" fill="#ff8c42" font-weight="bold">14</text>
+  <rect x="64" y="75" width="192" height="11" fill="rgba(30,14,4,0.7)"/>
+  <text x="70" y="84" font-family="monospace" font-size="5.5" fill="rgba(255,140,66,0.32)">ITEM</text>
+  <text x="156" y="84" font-family="monospace" font-size="5.5" fill="rgba(255,140,66,0.32)">CANT.</text>
+  <text x="208" y="84" font-family="monospace" font-size="5.5" fill="rgba(255,140,66,0.32)">ESTADO</text>
+  <line x1="64" y1="86" x2="256" y2="86" stroke="rgba(255,140,66,0.08)" stroke-width="0.5"/>
+  <text x="70" y="97" font-family="monospace" font-size="6" fill="rgba(255,220,180,0.6)">Menu Ejecutivo</text>
+  <text x="156" y="97" font-family="monospace" font-size="6" fill="rgba(255,220,180,0.4)">x12</text>
+  <rect x="208" y="92" width="28" height="5" rx="2" fill="#4caf50" opacity="0.7"/>
+  <text x="210" y="97" font-family="monospace" font-size="4.5" fill="white" opacity="0.9">LISTO</text>
+  <line x1="64" y1="101" x2="256" y2="101" stroke="rgba(255,140,66,0.06)" stroke-width="0.5"/>
+  <text x="70" y="112" font-family="monospace" font-size="6" fill="rgba(255,220,180,0.6)">Coctel Verano</text>
+  <text x="156" y="112" font-family="monospace" font-size="6" fill="rgba(255,220,180,0.4)">x8</text>
+  <rect x="208" y="107" width="36" height="5" rx="2" fill="#ff8c42" opacity="0.7"/>
+  <text x="210" y="112" font-family="monospace" font-size="4.5" fill="white" opacity="0.9">EN PREP.</text>
+  <line x1="64" y1="116" x2="256" y2="116" stroke="rgba(255,140,66,0.06)" stroke-width="0.5"/>
+  <text x="70" y="127" font-family="monospace" font-size="6" fill="rgba(255,220,180,0.6)">Buffet Empresa</text>
+  <text x="156" y="127" font-family="monospace" font-size="6" fill="rgba(255,220,180,0.4)">x40</text>
+  <rect x="208" y="122" width="38" height="5" rx="2" fill="rgba(200,200,200,0.2)" opacity="0.7"/>
+  <text x="210" y="127" font-family="monospace" font-size="4.5" fill="rgba(255,255,255,0.5)">PENDIENTE</text>
+  <rect x="64" y="138" width="192" height="12" rx="1.5" fill="rgba(255,200,80,0.06)" stroke="rgba(255,200,80,0.15)" stroke-width="0.5"/>
+  <text x="70" y="148" font-family="monospace" font-size="5.5" fill="rgba(255,200,80,0.5)">Sync contable legacy · Actualizado: 3 min</text>
+</svg>

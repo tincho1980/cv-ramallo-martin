@@ -27,6 +27,18 @@
   };
   const sectionNames = SECTION_NAMES[pageLang];
 
+  // ── Projects carousel — duplicate cards for infinite loop ─
+  (function () {
+    var track = document.getElementById('proj-track');
+    if (!track) return;
+    var origCards = Array.prototype.slice.call(track.children);
+    origCards.forEach(function (card) {
+      var clone = card.cloneNode(true);
+      clone.setAttribute('aria-hidden', 'true');
+      track.appendChild(clone);
+    });
+  })();
+
   // ── Custom cursor ────────────────────────────────────────
   let mx = 0, my = 0, rx = 0, ry = 0;
 
@@ -164,6 +176,63 @@
     hintEl.style.opacity  = idx === TOTAL - 1 ? '0' : '0.8';
   }
 
+  let aboutStatsRaf = null;
+
+  function resetAboutStats() {
+    if (aboutStatsRaf) {
+      cancelAnimationFrame(aboutStatsRaf);
+      aboutStatsRaf = null;
+    }
+    document.querySelectorAll('#w1 .stat-n[data-count]').forEach(function (el) {
+      const suf = el.getAttribute('data-suffix') || '';
+      el.textContent = '0' + suf;
+    });
+  }
+
+  function startAboutStats() {
+    const nodes = document.querySelectorAll('#w1 .stat-n[data-count]');
+    if (!nodes.length) return;
+    if (aboutStatsRaf) {
+      cancelAnimationFrame(aboutStatsRaf);
+      aboutStatsRaf = null;
+    }
+    const items = Array.from(nodes).map(function (el) {
+      return {
+        el: el,
+        end: parseInt(el.getAttribute('data-count'), 10),
+        suffix: el.getAttribute('data-suffix') || '',
+      };
+    });
+    const duration = 1800;
+    const t0 = performance.now();
+
+    function easeOutCubic(t) {
+      return 1 - Math.pow(1 - t, 3);
+    }
+
+    function tick(now) {
+      const raw = Math.min(1, (now - t0) / duration);
+      const e = easeOutCubic(raw);
+      items.forEach(function (item) {
+        const n = Math.round(e * item.end);
+        item.el.textContent = String(n) + item.suffix;
+      });
+      if (raw < 1) {
+        aboutStatsRaf = requestAnimationFrame(tick);
+      } else {
+        aboutStatsRaf = null;
+        items.forEach(function (item) {
+          item.el.textContent = String(item.end) + item.suffix;
+        });
+      }
+    }
+
+    items.forEach(function (item) {
+      item.el.textContent = '0' + item.suffix;
+    });
+    aboutStatsRaf = requestAnimationFrame(tick);
+  }
+
   function animateZoom(from, to) {
     if (transitioning) return;
     transitioning = true;
@@ -199,6 +268,11 @@
       current = to;
       updateUI(current);
       transitioning = false;
+      if (current === 1) {
+        startAboutStats();
+      } else {
+        resetAboutStats();
+      }
     }, 950);
   }
 

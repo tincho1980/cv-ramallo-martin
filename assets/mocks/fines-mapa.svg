@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 290 160">
+  <defs>
+    <linearGradient id="mbg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#020918"/>
+      <stop offset="100%" stop-color="#010610"/>
+    </linearGradient>
+  </defs>
+  <rect width="290" height="160" fill="url(#mbg)"/>
+  <rect width="290" height="28" fill="rgba(2,12,30,0.9)"/>
+  <rect y="27.5" width="290" height="0.5" fill="#4499ff" opacity="0.2"/>
+  <text x="12" y="18" font-family="monospace" font-size="9" fill="#4499ff" font-weight="bold">FinEs · Mapa Interactivo</text>
+  <text x="196" y="18" font-family="monospace" font-size="6.5" fill="rgba(100,180,255,0.3)">GIS · DGCyE</text>
+  <rect x="0" y="28" width="195" height="132" fill="rgba(3,15,35,0.8)"/>
+  <polyline points="80,42 88,42 96,48 104,50 108,56 106,64 110,70 108,78 112,84 108,92 104,98 100,108 96,118 90,128 84,138 78,145 74,138 70,128 66,118 62,110 58,100 56,90 58,82 62,76 60,68 64,62 68,56 72,50 76,44 80,42" fill="rgba(40,90,180,0.15)" stroke="rgba(100,160,255,0.4)" stroke-width="0.8" stroke-linejoin="round"/>
+  <line x1="62" y1="80" x2="110" y2="80" stroke="rgba(100,160,255,0.08)" stroke-width="0.5" stroke-dasharray="2,2"/>
+  <line x1="62" y1="100" x2="110" y2="100" stroke="rgba(100,160,255,0.08)" stroke-width="0.5" stroke-dasharray="2,2"/>
+  <line x1="84" y1="50" x2="84" y2="140" stroke="rgba(100,160,255,0.08)" stroke-width="0.5" stroke-dasharray="2,2"/>
+  <circle cx="84" cy="68" r="4" fill="#4499ff" opacity="0.8"/>
+  <circle cx="84" cy="68" r="7" fill="none" stroke="#4499ff" stroke-width="0.5" opacity="0.3"/>
+  <circle cx="76" cy="82" r="3" fill="#44ddff" opacity="0.7"/>
+  <circle cx="94" cy="78" r="2.5" fill="#44ddff" opacity="0.65"/>
+  <circle cx="80" cy="95" r="3.5" fill="#4499ff" opacity="0.7"/>
+  <circle cx="88" cy="105" r="2" fill="#44aaff" opacity="0.6"/>
+  <circle cx="72" cy="72" r="2" fill="#44ddff" opacity="0.55"/>
+  <circle cx="100" cy="88" r="1.5" fill="#4499ff" opacity="0.5"/>
+  <circle cx="84" cy="68" r="5" fill="none" stroke="#88ccff" stroke-width="1" opacity="0.6"/>
+  <text x="10" y="148" font-family="monospace" font-size="5" fill="rgba(100,160,255,0.3)">Buenos Aires · La Plata</text>
+  <rect x="195" y="28" width="95" height="132" fill="rgba(2,10,24,0.9)"/>
+  <rect x="195" y="28" width="0.5" height="132" fill="rgba(68,153,255,0.1)"/>
+  <text x="202" y="44" font-family="monospace" font-size="6.5" fill="#4499ff" font-weight="bold">SEDE SELEC.</text>
+  <line x1="202" y1="48" x2="282" y2="48" stroke="rgba(68,153,255,0.15)" stroke-width="0.5"/>
+  <text x="202" y="60" font-family="monospace" font-size="6.5" fill="rgba(180,210,255,0.7)">La Plata Centro</text>
+  <text x="202" y="72" font-family="monospace" font-size="5.5" fill="rgba(100,160,255,0.4)">Comision: 3A</text>
+  <text x="202" y="82" font-family="monospace" font-size="5.5" fill="rgba(100,160,255,0.4)">Alumnos: 28</text>
+  <text x="202" y="92" font-family="monospace" font-size="5.5" fill="rgba(100,160,255,0.4)">Turno: Noche</text>
+  <line x1="202" y1="100" x2="282" y2="100" stroke="rgba(68,153,255,0.1)" stroke-width="0.5"/>
+  <text x="202" y="112" font-family="monospace" font-size="6" fill="rgba(100,160,255,0.5)">ESTADISTICAS</text>
+  <text x="202" y="126" font-family="monospace" font-size="5.5" fill="rgba(160,200,255,0.5)">Total sedes: 142</text>
+  <text x="202" y="138" font-family="monospace" font-size="5.5" fill="rgba(160,200,255,0.5)">Total alumnos: 3.8k</text>
+  <text x="202" y="150" font-family="monospace" font-size="5.5" fill="rgba(160,200,255,0.5)">Activas: 98%</text>
+</svg>

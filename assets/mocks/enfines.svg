@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 290 160">
+  <rect width="290" height="160" fill="#020c02"/>
+  <rect width="290" height="32" fill="#030f03"/>
+  <rect y="31.5" width="290" height="0.5" fill="#00ff41" opacity="0.2"/>
+  <text x="12" y="20" font-family="monospace" font-size="10" fill="#00ff41" font-weight="bold">enfines</text>
+  <text x="72" y="20" font-family="monospace" font-size="7" fill="rgba(0,255,65,0.28)">· Dashboard · Alumnos · IA · Config</text>
+  <rect width="52" height="128" y="32" fill="#020e02"/>
+  <rect x="51.5" y="32" width="0.5" height="128" fill="rgba(0,255,65,0.08)"/>
+  <rect x="6" y="40" width="40" height="15" rx="2" fill="rgba(0,255,65,0.1)"/>
+  <text x="10" y="51" font-family="monospace" font-size="6.5" fill="#00c830">ž Inicio</text>
+  <text x="10" y="68" font-family="monospace" font-size="6.5" fill="rgba(0,255,65,0.3)">f Alumnos</text>
+  <text x="10" y="82" font-family="monospace" font-size="6.5" fill="rgba(0,255,65,0.3)">È Reportes</text>
+  <text x="10" y="96" font-family="monospace" font-size="6.5" fill="rgba(0,255,65,0.3)">& IA Chat</text>
+  <text x="10" y="110" font-family="monospace" font-size="6.5" fill="rgba(0,255,65,0.3)">™ Config</text>
+  <rect x="60" y="40" width="66" height="34" rx="2" fill="rgba(0,255,65,0.04)" stroke="rgba(0,255,65,0.18)" stroke-width="0.5"/>
+  <text x="66" y="52" font-family="monospace" font-size="5.5" fill="rgba(0,255,65,0.38)">ALUMNOS</text>
+  <text x="66" y="67" font-family="monospace" font-size="16" fill="#00ff41" font-weight="bold">1,247</text>
+  <rect x="132" y="40" width="66" height="34" rx="2" fill="rgba(0,229,204,0.04)" stroke="rgba(0,229,204,0.18)" stroke-width="0.5"/>
+  <text x="138" y="52" font-family="monospace" font-size="5.5" fill="rgba(0,229,204,0.38)">ASISTENCIA</text>
+  <text x="138" y="67" font-family="monospace" font-size="16" fill="#00e5cc" font-weight="bold">87%</text>
+  <rect x="204" y="40" width="66" height="34" rx="2" fill="rgba(0,255,65,0.04)" stroke="rgba(0,255,65,0.18)" stroke-width="0.5"/>
+  <text x="210" y="52" font-family="monospace" font-size="5.5" fill="rgba(0,255,65,0.38)">CURSOS</text>
+  <text x="210" y="67" font-family="monospace" font-size="16" fill="#00ff41" font-weight="bold">34</text>
+  <rect x="60" y="82" width="210" height="13" rx="1.5" fill="rgba(0,255,65,0.06)" stroke="rgba(0,255,65,0.12)" stroke-width="0.5"/>
+  <text x="66" y="92" font-family="monospace" font-size="6" fill="rgba(0,255,65,0.5)">& IA · Generando reporte semanal de rendimiento...</text>
+  <rect x="60" y="101" width="210" height="11" fill="rgba(0,20,5,0.6)"/>
+  <text x="66" y="110" font-family="monospace" font-size="5.5" fill="rgba(0,255,65,0.32)">ALUMNO</text>
+  <text x="138" y="110" font-family="monospace" font-size="5.5" fill="rgba(0,255,65,0.32)">CURSO</text>
+  <text x="222" y="110" font-family="monospace" font-size="5.5" fill="rgba(0,255,65,0.32)">ASIST.</text>
+  <line x1="60" y1="112" x2="270" y2="112" stroke="rgba(0,255,65,0.08)" stroke-width="0.5"/>
+  <text x="66" y="122" font-family="monospace" font-size="6" fill="rgba(200,255,200,0.55)">García, L.</text>
+  <text x="138" y="122" font-family="monospace" font-size="6" fill="rgba(200,255,200,0.3)">3°A Matemática</text>
+  <rect x="222" y="117" width="26" height="4" rx="2" fill="#00ff41" opacity="0.75"/>
+  <line x1="60" y1="126" x2="270" y2="126" stroke="rgba(0,255,65,0.06)" stroke-width="0.5"/>
+  <text x="66" y="136" font-family="monospace" font-size="6" fill="rgba(200,255,200,0.55)">López, M.</text>
+  <text x="138" y="136" font-family="monospace" font-size="6" fill="rgba(200,255,200,0.3)">2°B Historia</text>
+  <rect x="222" y="131" width="20" height="4" rx="2" fill="#00e5cc" opacity="0.65"/>
+  <line x1="60" y1="140" x2="270" y2="140" stroke="rgba(0,255,65,0.06)" stroke-width="0.5"/>
+  <text x="66" y="150" font-family="monospace" font-size="6" fill="rgba(200,255,200,0.55)">Torres, R.</text>
+  <text x="138" y="150" font-family="monospace" font-size="6" fill="rgba(200,255,200,0.3)">1°C Literatura</text>
+  <rect x="222" y="145" width="15" height="4" rx="2" fill="#ffaa00" opacity="0.65"/>
+</svg>
