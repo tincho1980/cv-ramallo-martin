@@ -28,6 +28,7 @@
   const sectionNames = SECTION_NAMES[pageLang];
 
   // ── Projects carousel — duplicate cards for infinite loop ─
+  /** Duplicates track children so `translateX(-50%)` loops without a visible seam. */
   (function () {
     var track = document.getElementById('proj-track');
     if (!track) return;
@@ -42,6 +43,7 @@
   // ── Custom cursor ────────────────────────────────────────
   let mx = 0, my = 0, rx = 0, ry = 0;
 
+  /** Shows or hides the dot and ring cursor. */
   function setCursorVisible(visible) {
     cur.classList.toggle('cursor--hidden', !visible);
     curR.classList.toggle('cursor--hidden', !visible);
@@ -67,6 +69,7 @@
     setCursorVisible(true);
   });
 
+  /** Smoothly interpolates the ring toward the dot (lerp each frame). */
   (function animCursor() {
     rx += (mx - rx) * 0.1;
     ry += (my - ry) * 0.1;
@@ -93,16 +96,15 @@
   const CHARS = 'アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン0123456789ABCDEF<>/{}[]();';
   let cols, drops, rainTimer;
 
+  /** Rebuilds column count and random start rows so rain enters gradually, not as a solid block. */
   function initDrops() {
     cols  = Math.floor(rain.width / 16);
-    // Each column starts at a random negative row (above the canvas).
-    // They "enter" the screen from the top at different times, so the screen
-    // fills up column by column instead of appearing as a pre-filled block.
     drops = Array(cols).fill(0).map(function () {
       return -Math.floor(Math.random() * 35);
     });
   }
 
+  /** Fits the canvas to the viewport and resets drop columns. */
   function resizeRain() {
     rain.width  = window.innerWidth;
     rain.height = window.innerHeight;
@@ -111,6 +113,7 @@
   resizeRain();
   window.addEventListener('resize', resizeRain);
 
+  /** One frame: trail fade, then draw glyphs per column and advance drops. */
   function drawRain() {
     rctx.fillStyle = 'rgba(2,12,2,0.055)';
     rctx.fillRect(0, 0, rain.width, rain.height);
@@ -127,8 +130,7 @@
     }
   }
 
-  // Starts rain gradually: canvas fades from opacity 0 → 0.2 over 4 s,
-  // draw interval decreases from 220 ms → 48 ms over 5 s (ease-in).
+  /** Fades rain in and ramps draw speed (220ms → 48ms), then runs at fixed interval. */
   function startRain() {
     if (rainTimer) return;
     rain.style.opacity = '0';
@@ -138,14 +140,13 @@
     const speedStart = 220;
     const speedEnd   = 48;
 
+    /** Single step: opacity fade, variable delay until steady `setInterval`. */
     function loop() {
       const elapsed = Date.now() - t0;
 
-      // Canvas opacity fade-in
       const op = Math.min(elapsed / opDur, 1);
       rain.style.opacity = (op * 0.2).toFixed(4);
 
-      // Speed ramp-up (quadratic ease-in)
       const sp    = Math.min(elapsed / speedDur, 1);
       const eased = sp * sp;
       const delay = Math.round(speedStart - (speedStart - speedEnd) * eased);
@@ -170,6 +171,7 @@
   let current = 0;
   let transitioning = false;
 
+  /** Syncs progress dots, section label, and scroll hint visibility to `idx`. */
   function updateUI(idx) {
     pdots.forEach(function (d, i) { d.classList.toggle('active', i === idx); });
     coordsEl.textContent  = '0' + idx + ' · ' + sectionNames[idx];
@@ -178,6 +180,7 @@
 
   let aboutStatsRaf = null;
 
+  /** Stops the counter animation and resets stat text to zero. */
   function resetAboutStats() {
     if (aboutStatsRaf) {
       cancelAnimationFrame(aboutStatsRaf);
@@ -189,6 +192,7 @@
     });
   }
 
+  /** Animates `#w1` stat numbers from 0 to `data-count` with ease-out cubic. */
   function startAboutStats() {
     const nodes = document.querySelectorAll('#w1 .stat-n[data-count]');
     if (!nodes.length) return;
@@ -206,10 +210,12 @@
     const duration = 1800;
     const t0 = performance.now();
 
+    /** t in [0,1] → eased progress (decelerates near the end). */
     function easeOutCubic(t) {
       return 1 - Math.pow(1 - t, 3);
     }
 
+    /** One animation frame: interpolate counts, reschedule until complete. */
     function tick(now) {
       const raw = Math.min(1, (now - t0) / duration);
       const e = easeOutCubic(raw);
@@ -233,6 +239,7 @@
     aboutStatsRaf = requestAnimationFrame(tick);
   }
 
+  /** Cross-fades worlds with a zoom in/out; runs about-stats when landing on About. */
   function animateZoom(from, to) {
     if (transitioning) return;
     transitioning = true;
@@ -276,6 +283,7 @@
     }, 950);
   }
 
+  /** Navigates to section index if allowed; closes mobile menu first. */
   function goTo(idx) {
     if (idx === current || transitioning) return;
     closeMenu();
@@ -284,12 +292,14 @@
 
   let menuOpen = false;
 
+  /** Opens or closes the full-screen nav overlay. */
   function toggleMenu() {
     menuOpen = !menuOpen;
     hamburger.classList.toggle('open', menuOpen);
     menu.classList.toggle('open', menuOpen);
   }
 
+  /** Forces the side menu closed (used before section changes). */
   function closeMenu() {
     menuOpen = false;
     hamburger.classList.remove('open');
@@ -350,6 +360,7 @@
   });
 
   // ── Loader sequence ──────────────────────────────────────
+  /** Types `text` char by char with jitter; calls `onDone` when finished. */
   function typeLine(text, charDelay, onDone) {
     let i = 0;
     (function next() {
@@ -362,6 +373,7 @@
     })();
   }
 
+  /** Ends loader phase: starts rain, fades in main UI and nav chrome. */
   function showHero() {
     startRain();
     viewport.style.transition = 'opacity 1.2s ease';
