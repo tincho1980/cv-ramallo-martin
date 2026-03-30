@@ -81,6 +81,82 @@ html, body {
   color: var(--matrix-dark); user-select: none;
 }
 
+/* Site credit: in document flow on mobile; fixed strip on desktop (no layout-scroll). */
+.site-footer {
+  position: relative;
+  width: 100%;
+  z-index: 400;
+  padding: 16px 20px calc(16px + env(safe-area-inset-bottom, 0px));
+  text-align: center;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  background: rgba(2, 12, 2, 0.94);
+  border-top: 1px solid var(--matrix-dark);
+  pointer-events: none;
+}
+html:not(.layout-scroll) .site-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-top: none;
+  background: linear-gradient(to top, rgba(2, 12, 2, 0.96) 0%, rgba(2, 12, 2, 0.55) 65%, transparent 100%);
+}
+.site-footer__inner {
+  margin: 0;
+  line-height: 1.6;
+}
+.site-footer__link {
+  pointer-events: auto;
+  color: var(--matrix-dim);
+  text-decoration: none;
+  transition: color 0.2s ease, text-shadow 0.2s ease;
+}
+.site-footer__link:hover {
+  color: var(--matrix);
+  text-shadow: 0 0 12px rgba(0, 255, 65, 0.28);
+}
+.footer-heart {
+  display: inline-block;
+  color: #e63946;
+  margin: 0 0.12em;
+  vertical-align: -0.08em;
+  line-height: 1;
+  font-size: 1.15em;
+  transform-origin: 50% 55%;
+  will-change: transform;
+  /* `linear`: each segment hits keyframe values; easing on shorthand smothers small scales on tiny type. */
+  animation: footerHeartBeat 2.4s linear infinite;
+}
+/* Lub–dub: two quick beats, long rest. Scale + glow so it reads at 10px body size. */
+@keyframes footerHeartBeat {
+  0%, 28%, 100% {
+    transform: scale(1) translateZ(0);
+    text-shadow: 0 0 5px rgba(230, 57, 70, 0.4);
+  }
+  3% {
+    transform: scale(1.28) translateZ(0);
+    text-shadow: 0 0 16px rgba(230, 57, 70, 0.95);
+  }
+  7% {
+    transform: scale(1) translateZ(0);
+    text-shadow: 0 0 5px rgba(230, 57, 70, 0.4);
+  }
+  12% {
+    transform: scale(1.22) translateZ(0);
+    text-shadow: 0 0 14px rgba(230, 57, 70, 0.9);
+  }
+  18% {
+    transform: scale(1) translateZ(0);
+    text-shadow: 0 0 5px rgba(230, 57, 70, 0.4);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .footer-heart { animation: none; }
+}
+
 /* Full-screen overlay; links stagger in when `.open`. */
 #side-menu {
   position: fixed; inset: 0; z-index: 900;
@@ -204,6 +280,15 @@ html, body {
   position: absolute; top: 44px; left: 112px;
   font-family: var(--mono); font-size: 16px; letter-spacing: 0.2em;
   text-transform: uppercase; color: var(--matrix);
+}
+
+/* Dense sections: reserve space under the floating title so “Backend & APIs” / headline don’t overlap. */
+@media (min-width: 769px) {
+  #w2.world,
+  #w5.world {
+    padding-top: 88px;
+    box-sizing: border-box;
+  }
 }
 
 /* Landing: avatar, name stack, CTAs. */
@@ -451,31 +536,83 @@ html, body {
   align-items: center; gap: 28px;
 }
 
+.proj-carousel-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+}
+
 .proj-carousel-outer {
-  width: 100%; overflow: hidden;
+  width: 100%;
+  overflow: hidden;
   padding: 16px 0 12px;
-  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 7%, black 93%, transparent 100%);
-  mask-image: linear-gradient(to right, transparent 0%, black 7%, black 93%, transparent 100%);
+  container-type: inline-size;
+  container-name: projStage;
+}
+/* Una card ocupa casi todo el ancho del visor; ~36px por lado para ver el borde de la anterior/siguiente. */
+@container projStage (min-width: 0) {
+  .proj-track .proj-card {
+    width: clamp(240px, calc(100cqi - 72px), 420px);
+    flex: 0 0 clamp(240px, calc(100cqi - 72px), 420px);
+    max-width: 420px;
+  }
 }
 
 .proj-track {
   display: flex; gap: 20px;
   width: max-content;
-  animation: proj-slide 38s linear infinite;
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+  transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.proj-track.proj-track--no-trans {
+  transition: none;
 }
 
-.proj-carousel-outer:hover .proj-track {
-  animation-play-state: paused;
+.proj-nav {
+  position: absolute;
+  top: 50%;
+  z-index: 25;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 1px solid var(--matrix-dark);
+  background: rgba(2, 12, 2, 0.92);
+  color: var(--matrix-dim);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color .2s ease, border-color .2s ease, box-shadow .2s ease;
 }
+.proj-nav:hover {
+  color: var(--matrix);
+  border-color: var(--matrix);
+  box-shadow: 0 0 16px rgba(0, 255, 65, 0.12);
+}
+.proj-nav:focus-visible {
+  outline: 1px solid var(--matrix);
+  outline-offset: 2px;
+}
+.proj-nav:disabled {
+  opacity: 0.32;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+.proj-nav--prev { left: 4px; }
+.proj-nav--next { right: 4px; }
+.proj-nav .fa-solid { font-size: 12px; pointer-events: none; }
 
-/* Infinite marquee: track is 2× width (cloned cards), slide half then loop. */
-@keyframes proj-slide {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
+@media (max-width: 400px) {
+  .proj-nav { width: 36px; height: 36px; }
+  .proj-nav--prev { left: 0; }
+  .proj-nav--next { right: 0; }
 }
 
 .proj-card {
-  width: 280px; flex-shrink: 0;
+  width: 280px;
+  flex-shrink: 0;
   border: 1px solid var(--matrix-dark);
   background: rgba(0,255,65,0.01);
   position: relative; overflow: hidden;
@@ -491,12 +628,18 @@ html, body {
 }
 
 .proj-card-img {
-  width: 100%; height: 152px;
-  overflow: hidden; position: relative;
+  width: 100%;
+  height: clamp(152px, 36cqi, 220px);
+  position: relative;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.35);
 }
 .proj-card-img img {
-  width: 100%; height: 100%; object-fit: cover;
-  transition: transform .45s ease;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  transition: transform 0.45s ease;
   display: block;
 }
 .proj-card:hover .proj-card-img img {
@@ -698,3 +841,91 @@ html, body {
 }
 /* Terminal-style caret blink on the boot loader. */
 @keyframes loaderBlink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+/* ── Scroll layout (≤768px + html.layout-scroll): document scroll, stacked sections ── */
+html.layout-scroll {
+  scroll-behavior: smooth;
+}
+html.layout-scroll,
+html.layout-scroll body {
+  height: auto;
+  min-height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  cursor: auto;
+}
+html.layout-scroll .cursor,
+html.layout-scroll .cursor-ring {
+  display: none !important;
+}
+html.layout-scroll #progress,
+html.layout-scroll #scroll-hint {
+  display: none !important;
+}
+html.layout-scroll #viewport {
+  position: relative;
+  inset: auto;
+  overflow: visible;
+}
+html.layout-scroll .world {
+  position: relative;
+  inset: auto;
+  min-height: 100vh;
+  min-height: 100dvh;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  will-change: auto;
+  scroll-margin-top: 12px;
+  padding-block: clamp(72px, 14vw, 120px);
+  padding-inline: max(24px, env(safe-area-inset-left, 0px)) max(24px, env(safe-area-inset-right, 0px));
+  box-sizing: border-box;
+}
+html.layout-scroll .world .portal-dot {
+  display: none;
+}
+html.layout-scroll #hamburger {
+  top: calc(28px + env(safe-area-inset-top, 0px));
+  left: calc(20px + env(safe-area-inset-left, 0px));
+}
+html.layout-scroll .lang-switch {
+  top: calc(28px + env(safe-area-inset-top, 0px));
+  right: calc(20px + env(safe-area-inset-right, 0px));
+}
+/* Flow the section title so it never overlaps the first line of content (Stack, Contact, etc.). */
+html.layout-scroll .world:not(#w0) {
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+}
+html.layout-scroll .section-label {
+  position: static;
+  align-self: flex-start;
+  margin-bottom: 0.75rem;
+  padding-left: 0;
+  padding-right: 0;
+  box-sizing: border-box;
+  top: auto;
+  left: auto;
+}
+html.layout-scroll .about-inner {
+  grid-template-columns: 1fr;
+  gap: 40px;
+}
+html.layout-scroll .stat-n {
+  font-size: clamp(42px, 14vw, 68px);
+}
+html.layout-scroll .exp-row {
+  grid-template-columns: 1fr;
+  gap: 18px;
+  padding: 28px 0;
+}
+html.layout-scroll .exp-role {
+  font-size: clamp(18px, 5.2vw, 24px);
+}
+html.layout-scroll .contact-inner {
+  grid-template-columns: 1fr;
+  gap: 48px;
+}
+html.layout-scroll .stack-inner {
+  margin-inline: auto;
+}

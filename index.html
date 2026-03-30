@@ -57,12 +57,12 @@
 <div id="side-menu">
   <nav>
     <ul>
-      <li><a href="#" data-section="0">Home</a></li>
-      <li><a href="#" data-section="1">Sobre mí</a></li>
-      <li><a href="#" data-section="2">Stack</a></li>
-      <li><a href="#" data-section="3">Experiencia</a></li>
-      <li><a href="#" data-section="4">Proyectos</a></li>
-      <li><a href="#" data-section="5">Contacto</a></li>
+      <li><a href="#w0" data-section="0">Home</a></li>
+      <li><a href="#w1" data-section="1">Sobre mí</a></li>
+      <li><a href="#w2" data-section="2">Stack</a></li>
+      <li><a href="#w3" data-section="3">Experiencia</a></li>
+      <li><a href="#w4" data-section="4">Proyectos</a></li>
+      <li><a href="#w5" data-section="5">Contacto</a></li>
     </ul>
   </nav>
   <div class="menu-footer">miramallo@gmail.com &nbsp;·&nbsp; <a href="https://github.com/tincho1980" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:none;">github.com/tincho1980</a> &nbsp;·&nbsp; La Plata, AR</div>
@@ -101,8 +101,8 @@
         Y también los que nadie más quiso diseñar.
       </p>
       <nav class="hero-ctas" aria-label="Acciones">
-        <a href="#" data-section="4" class="hero-cta">Ver proyectos</a>
-        <a href="#" data-section="5" class="hero-cta">Contactame</a>
+        <a href="#w4" data-section="4" class="hero-cta">Ver proyectos</a>
+        <a href="#w5" data-section="5" class="hero-cta">Contactame</a>
         <a href="assets/CV%20-%20Mart%C3%ADn%20Ramallo%20(Desarrollo%20web)%20ES.pdf" class="hero-cta hero-cta--file" download="CV-Martin-Ramallo-ES.pdf">Descargar CV</a>
       </nav>
     </div>
@@ -257,7 +257,11 @@
   <div class="world" id="w4">
     <div class="section-label">Proyectos</div>
     <div class="proj-scene">
-      <div class="proj-carousel-outer" id="proj-carousel">
+      <div class="proj-carousel-wrap">
+        <button type="button" class="proj-nav proj-nav--prev" aria-label="Proyectos anteriores">
+          <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
+        </button>
+        <div class="proj-carousel-outer" id="proj-carousel">
         <div class="proj-track" id="proj-track">
 
           <div class="proj-card">
@@ -351,6 +355,10 @@
           </div>
 
         </div>
+        </div>
+        <button type="button" class="proj-nav proj-nav--next" aria-label="Proyectos siguientes">
+          <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+        </button>
       </div>
       <a class="proj-github-link" href="https://github.com/tincho1980" target="_blank" rel="noopener noreferrer">
         <i class="fa-brands fa-github"></i>&nbsp; github.com/tincho1980
@@ -397,6 +405,12 @@
   </div>
 
 </div>
+
+<footer class="site-footer" role="contentinfo">
+  <p class="site-footer__inner">
+    Hecho con <span class="footer-heart" role="img" aria-label="amor">♥</span> por <a class="site-footer__link" href="https://www.linkedin.com/in/mramallo" target="_blank" rel="noopener noreferrer">Martín Ramallo</a>.
+  </p>
+</footer>
 
 <script src="js/scripts.js" defer></script>
 </body>
