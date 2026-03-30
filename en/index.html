@@ -28,6 +28,7 @@
 <link rel="alternate" hreflang="en" href="index.html">
 <link rel="alternate" hreflang="x-default" href="../index.html">
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
@@ -95,7 +96,7 @@
       </div>
       <h1 class="hero-name">Martín<br><em>Ramallo</em></h1>
       <p class="hero-desc">
-        Co-Founder @ <a href="https://adavra.com" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:none;"><span>Adavra</span></a> &nbsp;·&nbsp; SaaS &nbsp;·&nbsp; AI &nbsp;·&nbsp; DevOps<br>
+        Co-Founder @ <a href="https://adavra.com" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:none;"><span>Adavra</span></a> &nbsp;·&nbsp; SaaS &nbsp;·&nbsp; AI &nbsp;·&nbsp; Backend<br>
         I build systems that work.<br>
         And the ones nobody else wanted to design.
       </p>
@@ -109,7 +110,7 @@
   </div>
 
   <div class="world" id="w1">
-    <div class="section-label">01 / about</div>
+    <div class="section-label">About</div>
     <div class="about-inner">
       <div class="about-text">
         <p>Full Stack developer with an unconventional path: over a decade running corporate operations in Spain before a <strong>full pivot into software</strong>.</p>
@@ -124,41 +125,54 @@
         </div>
       </div>
       <div class="stats-col">
-        <div class="stat"><div class="stat-n">4+</div><div class="stat-l">years in development</div></div>
-        <div class="stat"><div class="stat-n">12+</div><div class="stat-l">years in leadership</div></div>
-        <div class="stat"><div class="stat-n">2</div><div class="stat-l">active SaaS products</div></div>
+        <div class="stat"><div class="stat-n" data-count="6" data-suffix="+">0</div><div class="stat-l">years in development</div></div>
+        <div class="stat"><div class="stat-n" data-count="12" data-suffix="+">0</div><div class="stat-l">years in leadership</div></div>
+        <div class="stat"><div class="stat-n" data-count="1" data-suffix="">0</div><div class="stat-l">active SaaS product</div></div>
       </div>
     </div>
     <div class="portal-dot"></div>
   </div>
 
   <div class="world" id="w2">
-    <div class="section-label">02 / stack</div>
+    <div class="section-label">Stack</div>
     <div class="stack-inner">
       <div class="stack-cat">
         <div class="cat-label">Backend & APIs</div>
-        <div class="pills">
-          <div class="pill core">Node.js</div><div class="pill core">NestJS</div>
-          <div class="pill core">Monorepo</div><div class="pill">Express</div>
-          <div class="pill">Django</div><div class="pill">REST APIs</div><div class="pill">Jest</div>
+        <div class="tech-grid">
+          <div class="tech-card core"><img class="tech-icon-img" src="../assets/techIcons/Node.js.svg" alt="Node.js"><span class="tech-name">Node.js</span></div>
+          <div class="tech-card core"><img class="tech-icon-img" src="../assets/techIcons/Nest.js.svg" alt="NestJS"><span class="tech-name">NestJS</span></div>
+          <div class="tech-card core"><i class="fa-solid fa-folder-tree tech-icon-fa"></i><span class="tech-name">Monorepo</span></div>
+          <div class="tech-card"><img class="tech-icon-img" src="../assets/techIcons/Express.svg" alt="Express"><span class="tech-name">Express</span></div>
+          <div class="tech-card"><img class="tech-icon-img" src="../assets/techIcons/Django.svg" alt="Django"><span class="tech-name">Django</span></div>
+          <div class="tech-card"><i class="fa-solid fa-plug tech-icon-fa"></i><span class="tech-name">REST APIs</span></div>
+          <div class="tech-card core"><img class="tech-icon-img" src="../assets/techIcons/Swagger.svg" alt="Swagger"><span class="tech-name">Swagger</span></div>
+          <div class="tech-card"><img class="tech-icon-img" src="../assets/techIcons/Jest.svg" alt="Jest"><span class="tech-name">Jest</span></div>
         </div>
       </div>
       <div class="stack-cat">
         <div class="cat-label">Frontend</div>
-        <div class="pills">
-          <div class="pill core">TypeScript</div><div class="pill core">React</div>
-          <div class="pill core">Next.js</div><div class="pill core">Vue.js</div>
-          <div class="pill">Tailwind CSS</div><div class="pill">Sass</div>
+        <div class="tech-grid">
+          <div class="tech-card core"><img class="tech-icon-img" src="../assets/techIcons/TypeScript.svg" alt="TypeScript"><span class="tech-name">TypeScript</span></div>
+          <div class="tech-card core"><img class="tech-icon-img" src="../assets/techIcons/React.svg" alt="React"><span class="tech-name">React</span></div>
+          <div class="tech-card core"><img class="tech-icon-img" src="../assets/techIcons/Next.js.svg" alt="Next.js"><span class="tech-name">Next.js</span></div>
+          <div class="tech-card core"><img class="tech-icon-img" src="../assets/techIcons/Vue.js.svg" alt="Vue.js"><span class="tech-name">Vue.js</span></div>
+          <div class="tech-card core"><img class="tech-icon-img" src="../assets/techIcons/Tailwind%20CSS.svg" alt="Tailwind CSS"><span class="tech-name">Tailwind CSS</span></div>
+          <div class="tech-card core"><img class="tech-icon-img" src="../assets/techIcons/Sass.svg" alt="Sass"><span class="tech-name">Sass</span></div>
         </div>
       </div>
       <div class="stack-cat">
         <div class="cat-label">DB · Infra · AI</div>
-        <div class="pills">
-          <div class="pill core">PostgreSQL</div><div class="pill core">MongoDB</div>
-          <div class="pill">MySQL</div><div class="pill core">AWS</div>
-          <div class="pill">Cloudflare</div><div class="pill">Railway</div>
-          <div class="pill core">n8n</div><div class="pill core">AI Integration</div>
-          <div class="pill">Supabase</div><div class="pill">Git / <a href="https://github.com/tincho1980" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:none;">GitHub</a></div>
+        <div class="tech-grid">
+          <div class="tech-card core"><img class="tech-icon-img" src="../assets/techIcons/PostgresSQL.svg" alt="PostgreSQL"><span class="tech-name">PostgreSQL</span></div>
+          <div class="tech-card core"><img class="tech-icon-img" src="../assets/techIcons/MongoDB.svg" alt="MongoDB"><span class="tech-name">MongoDB</span></div>
+          <div class="tech-card core"><img class="tech-icon-img" src="../assets/techIcons/MySQL.svg" alt="MySQL"><span class="tech-name">MySQL</span></div>
+          <div class="tech-card core"><img class="tech-icon-img" src="../assets/techIcons/AWS.svg" alt="AWS"><span class="tech-name">AWS</span></div>
+          <div class="tech-card core"><i class="fa-brands fa-cloudflare tech-icon-fa" style="color:#F48120"></i><span class="tech-name">Cloudflare</span></div>
+          <div class="tech-card core"><img class="tech-icon-img" src="../assets/techIcons/railway.svg" alt="Railway"><span class="tech-name">Railway</span></div>
+          <div class="tech-card core"><i class="fa-solid fa-diagram-project tech-icon-fa" style="color:#EA4B71"></i><span class="tech-name">n8n</span></div>
+          <div class="tech-card core"><img class="tech-icon-img" src="../assets/techIcons/ai-integration.svg" alt="AI Integration"><span class="tech-name">AI Integration</span></div>
+          <div class="tech-card core"><img class="tech-icon-img" src="../assets/techIcons/supabase-logo-icon.svg" alt="Supabase"><span class="tech-name">Supabase</span></div>
+          <a class="tech-card core" href="https://github.com/tincho1980" target="_blank" rel="noopener noreferrer"><img class="tech-icon-img" src="../assets/techIcons/GitHub.svg" alt="GitHub"><span class="tech-name">Git / GitHub</span></a>
         </div>
       </div>
     </div>
@@ -166,20 +180,24 @@
   </div>
 
   <div class="world" id="w3">
-    <div class="section-label">03 / experience</div>
+    <div class="section-label">Experience</div>
     <div class="exp-inner">
       <div class="exp-row">
         <div>
           <div class="exp-period">2026 — present</div>
-          <div class="exp-co"><a href="https://adavra.com" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:none;">Adavra</a></div>
+          <div class="exp-co"><a href="https://adavra.com" target="_blank" rel="noopener noreferrer">Adavra</a></div>
+          <a class="exp-mail" href="mailto:info@adavra.com">info@adavra.com</a>
         </div>
         <div>
           <div class="exp-role">Co-Founder & <em>Tech Lead</em></div>
           <p class="exp-desc">Architecture and development of <a href="https://enfines.com.ar" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:none;">Enfines</a>, B2B SaaS for education management. NestJS monorepo with reusable modules, full infrastructure and AI integration for dashboards with auto-generated queries.</p>
           <div class="exp-tags">
-            <span class="exp-tag hi">NestJS</span><span class="exp-tag hi">TypeScript</span>
-            <span class="exp-tag hi">AI</span><span class="exp-tag">PostgreSQL</span>
-            <span class="exp-tag">DevOps</span><span class="exp-tag">SaaS</span>
+            <div class="exp-tag-icon" title="NestJS"><img src="../assets/techIcons/Nest.js.svg" alt="NestJS"></div>
+            <div class="exp-tag-icon" title="TypeScript"><img src="../assets/techIcons/TypeScript.svg" alt="TypeScript"></div>
+            <div class="exp-tag-icon" title="AI Integration"><img src="../assets/techIcons/ai-integration.svg" alt="AI"></div>
+            <div class="exp-tag-icon" title="PostgreSQL"><img src="../assets/techIcons/PostgresSQL.svg" alt="PostgreSQL"></div>
+            <div class="exp-tag-icon" title="DevOps"><i class="fa-solid fa-server tech-icon-fa"></i></div>
+            <div class="exp-tag-icon" title="SaaS"><i class="fa-solid fa-cloud tech-icon-fa"></i></div>
           </div>
         </div>
       </div>
@@ -187,40 +205,48 @@
         <div>
           <div class="exp-period">2023 — present</div>
           <div class="exp-co">Freelance</div>
+          <a class="exp-mail" href="mailto:miramallo@gmail.com">miramallo@gmail.com</a>
         </div>
         <div>
           <div class="exp-role">Full Stack <em>Developer</em></div>
           <p class="exp-desc">End-to-end solutions for photography, catering, real estate and government bodies. From code to production infrastructure, with integrations into legacy systems.</p>
           <div class="exp-tags">
-            <span class="exp-tag hi">Next.js</span><span class="exp-tag hi">Vue.js</span>
-            <span class="exp-tag">Django</span><span class="exp-tag">Node.js</span>
+            <div class="exp-tag-icon" title="Next.js"><img src="../assets/techIcons/Next.js.svg" alt="Next.js"></div>
+            <div class="exp-tag-icon" title="Vue.js"><img src="../assets/techIcons/Vue.js.svg" alt="Vue.js"></div>
+            <div class="exp-tag-icon" title="Django"><img src="../assets/techIcons/Django.svg" alt="Django"></div>
+            <div class="exp-tag-icon" title="Node.js"><img src="../assets/techIcons/Node.js.svg" alt="Node.js"></div>
           </div>
         </div>
       </div>
       <div class="exp-row">
         <div>
           <div class="exp-period">2021 — 2023</div>
-          <div class="exp-co">Devtion IT</div>
+          <div class="exp-co"><a href="https://www.instagram.com/devtionit/?hl=es-la" target="_blank" rel="noopener noreferrer">Devtion IT</a></div>
         </div>
         <div>
           <div class="exp-role">Full Stack <em>Developer</em></div>
           <p class="exp-desc">Frontend and backend for Ellie Care, RedLink and Campar. MERN stack, relational integrations and complex per-client requirements.</p>
           <div class="exp-tags">
-            <span class="exp-tag">React</span><span class="exp-tag">Node.js</span>
-            <span class="exp-tag">MongoDB</span><span class="exp-tag">PostgreSQL</span>
+            <div class="exp-tag-icon" title="React"><img src="../assets/techIcons/React.svg" alt="React"></div>
+            <div class="exp-tag-icon" title="Node.js"><img src="../assets/techIcons/Node.js.svg" alt="Node.js"></div>
+            <div class="exp-tag-icon" title="MongoDB"><img src="../assets/techIcons/MongoDB.svg" alt="MongoDB"></div>
+            <div class="exp-tag-icon" title="PostgreSQL"><img src="../assets/techIcons/PostgresSQL.svg" alt="PostgreSQL"></div>
           </div>
         </div>
       </div>
       <div class="exp-row exp-row--muted">
         <div>
           <div class="exp-period">2006 — 2018</div>
-          <div class="exp-co">ZT Hotels · Spain</div>
+          <div class="exp-co"><a href="https://zthotels.com/" target="_blank" rel="noopener noreferrer">ZT Hotels</a> · Spain</div>
+          <a class="exp-mail" href="mailto:booking@zthotels.com">booking@zthotels.com</a>
         </div>
         <div>
           <div class="exp-role">Corporate <em>Director</em></div>
           <p class="exp-desc">Operations across seven hotels in Spain, reporting to the CEO. Multidisciplinary team management, profitability optimization and process design at scale.</p>
           <div class="exp-tags">
-            <span class="exp-tag">Leadership</span><span class="exp-tag">Operations</span><span class="exp-tag">Strategy</span>
+            <div class="exp-tag-icon" title="Leadership"><i class="fa-solid fa-users tech-icon-fa"></i></div>
+            <div class="exp-tag-icon" title="Operations"><i class="fa-solid fa-gears tech-icon-fa"></i></div>
+            <div class="exp-tag-icon" title="Strategy"><i class="fa-solid fa-chess tech-icon-fa"></i></div>
           </div>
         </div>
       </div>
@@ -229,52 +255,112 @@
   </div>
 
   <div class="world" id="w4">
-    <div class="section-label">04 / projects</div>
-    <div class="proj-inner">
-      <div class="proj-card">
-        <div class="proj-n">01 —</div>
-        <a class="proj-name" href="https://enfines.com.ar" target="_blank" rel="noopener noreferrer" style="text-decoration:none;display:block;">Enfines</a>
-        <p class="proj-desc">B2B SaaS for end-to-end management of educational organizations. AI-powered dashboard with dynamic reporting.</p>
-        <div class="proj-tech">NestJS · Next.js · PostgreSQL · AI</div>
-        <div class="proj-arrow">↗</div>
+    <div class="section-label">Projects</div>
+    <div class="proj-scene">
+      <div class="proj-carousel-outer" id="proj-carousel">
+        <div class="proj-track" id="proj-track">
+
+          <div class="proj-card">
+            <div class="proj-card-img">
+              <img src="../assets/mocks/enfines_mockup.png" alt="Enfines">
+              <div class="proj-card-overlay">
+                <a href="https://enfines.com.ar" target="_blank" rel="noopener noreferrer" class="proj-visit">View project ↗</a>
+              </div>
+            </div>
+            <div class="proj-card-body">
+              <div class="proj-n">01 —</div>
+              <div class="proj-name">Enfines</div>
+              <p class="proj-desc">B2B SaaS for end-to-end management of educational organizations. AI-powered dashboard with dynamic reporting.</p>
+              <div class="proj-tech">NestJS · Next.js · PostgreSQL · AI</div>
+            </div>
+          </div>
+
+          <div class="proj-card">
+            <div class="proj-card-img">
+              <img src="../assets/mocks/vanguardia.png" alt="Vanguardia by Negrovski">
+              <div class="proj-card-overlay proj-card-overlay--private">
+                <span class="proj-private">Private project</span>
+              </div>
+            </div>
+            <div class="proj-card-body">
+              <div class="proj-n">02 —</div>
+              <div class="proj-name">Vanguardia by Negrovski</div>
+              <p class="proj-desc">Photography brand site with full infrastructure: domain, DNS and transactional email.</p>
+              <div class="proj-tech">Next.js · Resend · Cloudflare</div>
+            </div>
+          </div>
+
+          <div class="proj-card">
+            <div class="proj-card-img">
+              <img src="../assets/mocks/catering-saas.svg" alt="Catering SaaS">
+              <div class="proj-card-overlay proj-card-overlay--private">
+                <span class="proj-private">Private project</span>
+              </div>
+            </div>
+            <div class="proj-card-body">
+              <div class="proj-n">03 —</div>
+              <div class="proj-name">Catering SaaS</div>
+              <p class="proj-desc">Logistics, menus and integration with a legacy accounting system for a catering company.</p>
+              <div class="proj-tech">Vue.js · Node.js · PostgreSQL</div>
+            </div>
+          </div>
+
+          <div class="proj-card">
+            <div class="proj-card-img">
+              <img src="../assets/mocks/heat_map.png" alt="FinEs Interactive Map">
+              <div class="proj-card-overlay proj-card-overlay--private">
+                <span class="proj-private">Private project</span>
+              </div>
+            </div>
+            <div class="proj-card-body">
+              <div class="proj-n">04 —</div>
+              <div class="proj-name">FinEs Interactive Map</div>
+              <p class="proj-desc">Government data visualization with geolocation for the FinEs programme.</p>
+              <div class="proj-tech">Django · Python · PostgreSQL · GIS</div>
+            </div>
+          </div>
+
+          <div class="proj-card">
+            <div class="proj-card-img">
+              <img src="../assets/mocks/propadmin.svg" alt="PropAdmin">
+              <div class="proj-card-overlay proj-card-overlay--private">
+                <span class="proj-private">Private project</span>
+              </div>
+            </div>
+            <div class="proj-card-body">
+              <div class="proj-n">05 —</div>
+              <div class="proj-name">PropAdmin</div>
+              <p class="proj-desc">Property management and rental operations with a dual panel for agencies.</p>
+              <div class="proj-tech">Node.js · React · PostgreSQL</div>
+            </div>
+          </div>
+
+          <div class="proj-card">
+            <div class="proj-card-img">
+              <img src="../assets/mocks/gatito_gramatico.png" alt="Gatito Gramático">
+              <div class="proj-card-overlay">
+                <a href="https://gatito-gramatico.netlify.app/" target="_blank" rel="noopener noreferrer" class="proj-visit">View project ↗</a>
+              </div>
+            </div>
+            <div class="proj-card-body">
+              <div class="proj-n">06 —</div>
+              <div class="proj-name">Gatito Gramático</div>
+              <p class="proj-desc">Educational web game for grammar practice. AI defines game content and evaluates every answer.</p>
+              <div class="proj-tech">React · AI · Netlify</div>
+            </div>
+          </div>
+
+        </div>
       </div>
-      <div class="proj-card">
-        <div class="proj-n">02 —</div>
-        <div class="proj-name">Vanguardia by Negrovski</div>
-        <p class="proj-desc">Photography brand site with full infrastructure: domain, DNS and transactional email.</p>
-        <div class="proj-tech">Next.js · Resend · Cloudflare</div>
-        <div class="proj-arrow">↗</div>
-      </div>
-      <div class="proj-card">
-        <div class="proj-n">03 —</div>
-        <div class="proj-name">Catering SaaS</div>
-        <p class="proj-desc">Logistics, menus and integration with a legacy accounting system for a catering company.</p>
-        <div class="proj-tech">Vue.js · Node.js · PostgreSQL</div>
-        <div class="proj-arrow">↗</div>
-      </div>
-      <div class="proj-card">
-        <div class="proj-n">04 —</div>
-        <div class="proj-name">FinEs Interactive Map</div>
-        <p class="proj-desc">Government data visualization with geolocation for the FinEs programme.</p>
-        <div class="proj-tech">Django · Python · PostgreSQL · GIS</div>
-        <div class="proj-arrow">↗</div>
-      </div>
-      <div class="proj-card">
-        <div class="proj-n">05 —</div>
-        <div class="proj-name">PropAdmin</div>
-        <p class="proj-desc">Property management and rental operations with a dual panel for agencies.</p>
-        <div class="proj-tech">Node.js · React · PostgreSQL</div>
-        <div class="proj-arrow">↗</div>
-      </div>
-      <div class="proj-card proj-more">
-        <a href="https://github.com/tincho1980" target="_blank" rel="noopener noreferrer">github.com/tincho1980 →</a>
-      </div>
+      <a class="proj-github-link" href="https://github.com/tincho1980" target="_blank" rel="noopener noreferrer">
+        <i class="fa-brands fa-github"></i>&nbsp; github.com/tincho1980
+      </a>
     </div>
     <div class="portal-dot"></div>
   </div>
 
   <div class="world" id="w5">
-    <div class="section-label">05 / contact</div>
+    <div class="section-label">Contact</div>
     <div class="contact-inner">
       <div class="contact-left">
         <div class="contact-big">Got a<br>project <em>in mind?</em></div>

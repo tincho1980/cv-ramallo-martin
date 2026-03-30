@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 290 160">
+  <defs>
+    <linearGradient id="ggbg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1a0d2e"/>
+      <stop offset="100%" stop-color="#0d0820"/>
+    </linearGradient>
+    <linearGradient id="btngrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#a855f7"/>
+      <stop offset="100%" stop-color="#7c3aed"/>
+    </linearGradient>
+  </defs>
+  <rect width="290" height="160" fill="url(#ggbg)"/>
+  <circle cx="20" cy="15" r="1" fill="#ffd700" opacity="0.6"/>
+  <circle cx="260" cy="20" r="1" fill="#ffd700" opacity="0.5"/>
+  <circle cx="40" cy="140" r="1" fill="#ffd700" opacity="0.4"/>
+  <circle cx="270" cy="130" r="1.5" fill="#ffd700" opacity="0.6"/>
+  <circle cx="150" cy="10" r="1" fill="white" opacity="0.4"/>
+  <circle cx="230" cy="50" r="1" fill="white" opacity="0.3"/>
+  <rect width="290" height="28" fill="rgba(20,10,40,0.9)"/>
+  <rect y="27.5" width="290" height="0.5" fill="#a855f7" opacity="0.3"/>
+  <text x="14" y="18" font-family="Georgia,serif" font-size="11" fill="#e879f9" font-weight="bold" font-style="italic">Gatito Gramatico</text>
+  <text x="218" y="18" font-family="monospace" font-size="8" fill="#ffd700">* * *</text>
+  <text x="248" y="18" font-family="monospace" font-size="7" fill="rgba(255,215,0,0.5)">1.240 pts</text>
+  <rect x="8" y="32" width="274" height="6" rx="3" fill="rgba(255,255,255,0.06)"/>
+  <rect x="8" y="32" width="164" height="6" rx="3" fill="url(#btngrad)" opacity="0.8"/>
+  <text x="14" y="48" font-family="monospace" font-size="5.5" fill="rgba(168,85,247,0.5)">NIVEL 3 · Pregunta 4 de 6</text>
+  <g transform="translate(220, 55)">
+    <ellipse cx="0" cy="30" rx="22" ry="24" fill="rgba(168,85,247,0.2)" stroke="rgba(168,85,247,0.4)" stroke-width="1"/>
+    <circle cx="0" cy="8" r="16" fill="rgba(168,85,247,0.25)" stroke="rgba(168,85,247,0.4)" stroke-width="1"/>
+    <polygon points="-14,0 -20,-12 -8,-2" fill="rgba(168,85,247,0.35)" stroke="rgba(168,85,247,0.4)" stroke-width="0.5"/>
+    <polygon points="14,0 20,-12 8,-2" fill="rgba(168,85,247,0.35)" stroke="rgba(168,85,247,0.4)" stroke-width="0.5"/>
+    <ellipse cx="-6" cy="7" rx="3.5" ry="4" fill="rgba(232,121,249,0.7)"/>
+    <ellipse cx="6" cy="7" rx="3.5" ry="4" fill="rgba(232,121,249,0.7)"/>
+    <ellipse cx="-6" cy="7.5" rx="1.5" ry="3" fill="#1a0d2e"/>
+    <ellipse cx="6" cy="7.5" rx="1.5" ry="3" fill="#1a0d2e"/>
+    <polygon points="0,12 -2,15 2,15" fill="#f9a8d4" opacity="0.8"/>
+    <path d="M-3,15 Q0,18 3,15" fill="none" stroke="rgba(249,168,212,0.6)" stroke-width="0.8"/>
+    <line x1="-16" y1="13" x2="-5" y2="13" stroke="rgba(249,168,212,0.4)" stroke-width="0.5"/>
+    <line x1="5" y1="13" x2="16" y2="13" stroke="rgba(249,168,212,0.4)" stroke-width="0.5"/>
+  </g>
+  <rect x="8" y="52" width="200" height="56" rx="4" fill="rgba(255,255,255,0.05)" stroke="rgba(168,85,247,0.3)" stroke-width="0.8"/>
+  <text x="16" y="67" font-family="Georgia,serif" font-size="7" fill="rgba(200,180,255,0.5)">COMPLETA LA ORACION:</text>
+  <text x="16" y="82" font-family="Georgia,serif" font-size="9" fill="rgba(240,230,255,0.85)">"El gato ___ en el jardin."</text>
+  <text x="16" y="96" font-family="monospace" font-size="6.5" fill="rgba(168,85,247,0.45)">Elige el verbo correcto:</text>
+  <rect x="8" y="114" width="58" height="20" rx="10" fill="url(#btngrad)" opacity="0.85"/>
+  <text x="37" y="128" font-family="monospace" font-size="7" fill="white" text-anchor="middle" font-weight="bold">dormi</text>
+  <rect x="72" y="114" width="58" height="20" rx="10" fill="rgba(255,255,255,0.07)" stroke="rgba(168,85,247,0.25)" stroke-width="0.5"/>
+  <text x="101" y="128" font-family="monospace" font-size="7" fill="rgba(200,180,255,0.65)" text-anchor="middle">durmio</text>
+  <rect x="136" y="114" width="58" height="20" rx="10" fill="rgba(255,255,255,0.07)" stroke="rgba(168,85,247,0.25)" stroke-width="0.5"/>
+  <text x="165" y="128" font-family="monospace" font-size="7" fill="rgba(200,180,255,0.65)" text-anchor="middle">dormio</text>
+  <rect x="8" y="140" width="200" height="14" rx="2" fill="rgba(249,115,22,0.08)" stroke="rgba(249,115,22,0.2)" stroke-width="0.5"/>
+  <text x="14" y="150" font-family="monospace" font-size="5.5" fill="rgba(249,115,22,0.6)">IA · Contenido y evaluacion generados por IA</text>
+</svg>
