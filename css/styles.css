@@ -16,6 +16,12 @@
   --mono: 'Space Mono', 'Courier New', monospace;
 }
 
+/* External links in running text: match surrounding color, no default underline. */
+.link-inherit {
+  color: inherit;
+  text-decoration: none;
+}
+
 /* Full-screen app shell: no page scroll, system cursor hidden (JS draws one). */
 html, body {
   width: 100%; height: 100%;
@@ -459,6 +465,8 @@ html:not(.layout-scroll) .site-footer {
   font-size: 26px; line-height: 1; display: block;
   color: #555;
 }
+.tech-icon-fa--cloudflare { color: #f48120; }
+.tech-icon-fa--n8n { color: #ea4b71; }
 .tech-name {
   font-family: var(--mono); font-size: 8.5px;
   letter-spacing: 0.05em; text-transform: uppercase;
