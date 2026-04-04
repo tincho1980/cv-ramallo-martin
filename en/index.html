@@ -51,18 +51,20 @@
 </div>
 
 <div id="hamburger">
-  <span></span><span></span><span></span>
+  <span class="hamburger__bar" aria-hidden="true"></span>
+  <span class="hamburger__bar" aria-hidden="true"></span>
+  <span class="hamburger__bar" aria-hidden="true"></span>
 </div>
 
 <div id="side-menu">
-  <nav>
-    <ul>
-      <li><a href="#w0" data-section="0">Home</a></li>
-      <li><a href="#w1" data-section="1">About</a></li>
-      <li><a href="#w2" data-section="2">Stack</a></li>
-      <li><a href="#w3" data-section="3">Experience</a></li>
-      <li><a href="#w4" data-section="4">Projects</a></li>
-      <li><a href="#w5" data-section="5">Contact</a></li>
+  <nav class="side-menu__nav" aria-label="Sections">
+    <ul class="side-menu__list">
+      <li class="side-menu__item"><a href="#w0" data-section="0" class="side-menu__link">Home</a></li>
+      <li class="side-menu__item"><a href="#w1" data-section="1" class="side-menu__link">About</a></li>
+      <li class="side-menu__item"><a href="#w2" data-section="2" class="side-menu__link">Stack</a></li>
+      <li class="side-menu__item"><a href="#w3" data-section="3" class="side-menu__link">Experience</a></li>
+      <li class="side-menu__item"><a href="#w4" data-section="4" class="side-menu__link">Projects</a></li>
+      <li class="side-menu__item"><a href="#w5" data-section="5" class="side-menu__link">Contact</a></li>
     </ul>
   </nav>
   <div class="menu-footer">miramallo@gmail.com &nbsp;·&nbsp; <a href="https://github.com/tincho1980" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:none;">github.com/tincho1980</a> &nbsp;·&nbsp; La Plata, AR</div>
@@ -96,7 +98,7 @@
       </div>
       <h1 class="hero-name">Martín<br><em>Ramallo</em></h1>
       <p class="hero-desc">
-        Co-Founder @ <a href="https://adavra.com" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:none;"><span>Adavra</span></a> &nbsp;·&nbsp; SaaS &nbsp;·&nbsp; AI &nbsp;·&nbsp; Backend<br>
+        Co-Founder @ <a href="https://adavra.com" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:none;"><span class="hero-desc__accent">Adavra</span></a> &nbsp;·&nbsp; SaaS &nbsp;·&nbsp; AI &nbsp;·&nbsp; Backend<br>
         I build systems that work.<br>
         And the ones nobody else wanted to design.
       </p>
