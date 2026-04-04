@@ -152,7 +152,7 @@
     requestAnimationFrame(animCursor);
   })();
 
-  document.querySelectorAll('a, button, .pdot, #hamburger, .proj-card, .proj-nav, .pill, .lang-switch a').forEach(function (el) {
+  document.querySelectorAll('a, button, .pdot, #hamburger, .proj-card, .proj-nav, .pill, .lang-switch__link').forEach(function (el) {
     el.addEventListener('mouseenter', function () {
       cur.style.width  = '1rem';
       cur.style.height = '1rem';
