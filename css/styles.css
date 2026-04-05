@@ -1,5 +1,63 @@
 /* Portfolio site: Matrix-inspired palette, full-viewport sections, custom cursor. */
 
+@font-face {
+  font-family: 'Fraunces';
+  src: url('../assets/fonts/fraunces-v38-latin/fraunces-v38-latin-300.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Fraunces';
+  src: url('../assets/fonts/fraunces-v38-latin/fraunces-v38-latin-regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Fraunces';
+  src: url('../assets/fonts/fraunces-v38-latin/fraunces-v38-latin-italic.woff2') format('woff2');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Fraunces';
+  src: url('../assets/fonts/fraunces-v38-latin/fraunces-v38-latin-700.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Fraunces';
+  src: url('../assets/fonts/fraunces-v38-latin/fraunces-v38-latin-900.woff2') format('woff2');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Space Mono';
+  src: url('../assets/fonts/space-mono-v17-latin/space-mono-v17-latin-regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Space Mono';
+  src: url('../assets/fonts/space-mono-v17-latin/space-mono-v17-latin-italic.woff2') format('woff2');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Space Mono';
+  src: url('../assets/fonts/space-mono-v17-latin/space-mono-v17-latin-700.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
 
 /* Color, type, and shared tokens. */
@@ -14,6 +72,12 @@
   --muted: #2a5c2a;
   --serif: 'Fraunces', Georgia, serif;
   --mono: 'Space Mono', 'Courier New', monospace;
+}
+
+/* External links in running text: match surrounding color, no default underline. */
+.link-inherit {
+  color: inherit;
+  text-decoration: none;
 }
 
 /* Full-screen app shell: no page scroll, system cursor hidden (JS draws one). */
@@ -459,6 +523,8 @@ html:not(.layout-scroll) .site-footer {
   font-size: 26px; line-height: 1; display: block;
   color: #555;
 }
+.tech-icon-fa--cloudflare { color: #f48120; }
+.tech-icon-fa--n8n { color: #ea4b71; }
 .tech-name {
   font-family: var(--mono); font-size: 8.5px;
   letter-spacing: 0.05em; text-transform: uppercase;
