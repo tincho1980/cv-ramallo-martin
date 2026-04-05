@@ -154,13 +154,13 @@
 
   document.querySelectorAll('a, button, .pdot, #hamburger, .proj-card, .proj-nav, .pill, .lang-switch a').forEach(function (el) {
     el.addEventListener('mouseenter', function () {
-      cur.style.width  = '1.6rem';
-      cur.style.height = '1.6rem';
+      cur.style.width  = '1rem';
+      cur.style.height = '1rem';
       curR.style.transform = 'translate(-50%,-50%) scale(1.5)';
     });
     el.addEventListener('mouseleave', function () {
-      cur.style.width  = '1rem';
-      cur.style.height = '1rem';
+      cur.style.width  = '0.625rem';
+      cur.style.height = '0.625rem';
       curR.style.transform = 'translate(-50%,-50%) scale(1)';
     });
   });
